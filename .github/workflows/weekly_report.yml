@@ -1,0 +1,78 @@
+name: Weekly Research Digest
+
+on:
+  # Run every Monday at 08:00 UTC
+  schedule:
+    - cron: "0 8 * * 1"
+
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Research topic to investigate"
+        required: false
+        default: "large language model reasoning advances"
+      max_results:
+        description: "Max papers per provider"
+        required: false
+        default: "12"
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write         # needed to commit the report back to the repo
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Python setup ──────────────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -e . --quiet
+
+      # ── 3. Run Research Agent ────────────────────────────────────────────────
+      - name: Run Research Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          REPORT_OUTPUT_DIR: reports
+        run: |
+          TOPIC="${{ github.event.inputs.topic || 'large language model reasoning advances' }}"
+          MAX="${{ github.event.inputs.max_results || '12' }}"
+          python -m research_agent "$TOPIC" \
+            --results "$MAX" \
+            --style apa \
+            --format markdown \
+            --output reports/
+
+      # ── 4. Also generate JSON sidecar ────────────────────────────────────────
+      - name: Generate JSON sidecar
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          REPORT_OUTPUT_DIR: reports
+        run: |
+          TOPIC="${{ github.event.inputs.topic || 'large language model reasoning advances' }}"
+          MAX="${{ github.event.inputs.max_results || '12' }}"
+          python -m research_agent "$TOPIC" \
+            --results "$MAX" \
+            --style apa \
+            --format json \
+            --output reports/
+
+      # ── 5. Commit report back to repository ──────────────────────────────────
+      - name: Commit report
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: weekly research digest [$(date +'%Y-%m-%d')]"
+          file_pattern: "reports/**"
+          commit_user_name: "Research Agent Bot"
+          commit_user_email: "research-agent@noreply.github.com"

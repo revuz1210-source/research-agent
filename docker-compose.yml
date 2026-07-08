@@ -1,0 +1,62 @@
+version: "3.9"
+
+# ── Research Agent — Docker Compose ──────────────────────────────────────────
+#
+# Start everything:   docker compose up
+# API only:           docker compose up api
+# UI only:            docker compose up ui
+# CLI one-shot:       docker compose run --rm cli "your query here"
+#
+# Set your key in .env:
+#   echo "OPENAI_API_KEY=sk-..." > .env
+
+services:
+
+  # ── REST API ────────────────────────────────────────────────────────────────
+  api:
+    build: .
+    image: research-agent:latest
+    environment:
+      MODE: api
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      SEMANTIC_SCHOLAR_API_KEY: ${SEMANTIC_SCHOLAR_API_KEY:-}
+      REPORT_OUTPUT_DIR: /app/reports
+    ports:
+      - "8000:8000"
+    volumes:
+      - reports:/app/reports
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── Streamlit UI ────────────────────────────────────────────────────────────
+  ui:
+    build: .
+    image: research-agent:latest
+    environment:
+      MODE: ui
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      SEMANTIC_SCHOLAR_API_KEY: ${SEMANTIC_SCHOLAR_API_KEY:-}
+      REPORT_OUTPUT_DIR: /app/reports
+    ports:
+      - "8501:8501"
+    volumes:
+      - reports:/app/reports
+    restart: unless-stopped
+
+  # ── CLI (one-shot, no restart) ───────────────────────────────────────────────
+  cli:
+    build: .
+    image: research-agent:latest
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      REPORT_OUTPUT_DIR: /app/reports
+    volumes:
+      - reports:/app/reports
+    profiles: ["cli"]   # only starts with: docker compose run cli
+
+volumes:
+  reports:

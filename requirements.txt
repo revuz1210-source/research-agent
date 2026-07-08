@@ -1,0 +1,9 @@
+openai>=1.14.0
+requests>=2.31.0
+
+# Optional — API server
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+
+# Optional — Web UI
+streamlit>=1.35.0

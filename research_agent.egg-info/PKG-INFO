@@ -1,0 +1,161 @@
+Metadata-Version: 2.4
+Name: research-agent
+Version: 1.0.0
+Summary: AI-powered Research Agent for academic and scientific literature tasks
+License: MIT
+Keywords: research,AI,NLP,literature,arxiv,citations
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: openai>=1.14.0
+Requires-Dist: requests>=2.31.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-cov>=5.0; extra == "dev"
+
+# Research Agent 🔬
+
+An AI-powered assistant for academic and scientific research. It autonomously searches
+for literature, summarises papers, manages citations, suggests hypotheses, and generates
+full research reports — all from a single natural-language query.
+
+---
+
+## Features
+
+| Capability | Description |
+|---|---|
+| **Literature Search** | Searches arXiv and Semantic Scholar; deduplicates and ranks by citation count |
+| **NLP Query Parsing** | Extracts keywords, date ranges, and topic from free-form questions |
+| **Paper Summarisation** | Generates concise academic summaries per paper via LLM |
+| **Literature Synthesis** | Produces a unified review of themes, gaps, and contradictions |
+| **Citation Management** | APA, MLA, IEEE, Chicago formatting with save/load persistence |
+| **Hypothesis Suggestion** | Generates novel, falsifiable hypotheses with confidence scores |
+| **Report Generation** | Compiles a full research report (Markdown or JSON) with all sections |
+| **CLI** | Full command-line interface with sensible defaults |
+| **Offline/Mock Mode** | Works without an API key using deterministic mock responses |
+
+---
+
+## Quick Start
+
+### 1. Install
+
+```bash
+pip install -e .
+# or just install dependencies:
+pip install -r requirements.txt
+```
+
+### 2. Configure (optional)
+
+```bash
+# For real LLM-powered summaries and hypotheses:
+export OPENAI_API_KEY="sk-..."
+
+# Optional: Semantic Scholar API key (higher rate limits)
+export SEMANTIC_SCHOLAR_API_KEY="..."
+
+# Optional: change defaults
+export OPENAI_MODEL="gpt-4o"
+export REPORT_OUTPUT_DIR="./my_reports"
+```
+
+Without `OPENAI_API_KEY`, the agent runs in **offline/mock mode** — all pipeline
+steps execute with deterministic placeholder text, which is useful for testing and demos.
+
+### 3. Run
+
+```bash
+# Full pipeline — search, summarise, hypothesise, report
+python -m research_agent "transformer models for protein structure prediction"
+
+# Limit results, choose IEEE citations, JSON output
+python -m research_agent "CRISPR off-target effects" --results 15 --style ieee --format json
+
+# Use only arXiv, skip hypothesis generation, print to stdout
+python -m research_agent "quantum error correction" --providers arxiv --no-hypotheses --no-save
+
+# Save citation library for later reuse
+python -m research_agent "climate tipping points" --save-citations refs.json
+
+# Load a previous library and add new papers
+python -m research_agent "ocean acidification" --load-citations refs.json
+```
+
+---
+
+## Python API
+
+```python
+from research_agent.agent import ResearchAgent
+
+agent = ResearchAgent(citation_style="ieee")
+
+# Full pipeline
+report = agent.run("What are the latest advances in LLM reasoning?")
+
+# Access specific sections
+print(report.section("introduction"))
+print(report.section("hypotheses"))
+print(report.section("conclusion"))
+
+# Print bibliography
+print(agent.bibliography())
+
+# Standalone steps
+papers = agent.search("attention mechanisms", max_results=5)
+papers = agent.summarise(papers)
+hyps   = agent.suggest_hypotheses(papers, topic="attention mechanisms")
+synth  = agent.synthesise(papers, topic="attention mechanisms")
+```
+
+---
+
+## Project Structure
+
+```
+research_agent/
+├── __init__.py          # Package metadata
+├── __main__.py          # python -m research_agent entry point
+├── agent.py             # 🧠 Orchestrator — wires all modules together
+├── cli.py               # 💻 Command-line interface
+├── config.py            # ⚙️  Configuration (env vars / defaults)
+├── models.py            # 📐 Data models (Paper, Author, Hypothesis, …)
+├── query_parser.py      # 🔍 NLP query → SearchQuery
+├── search.py            # 🌐 arXiv + Semantic Scholar providers
+├── summariser.py        # 📝 Per-paper summaries + synthesis
+├── citations.py         # 📚 Citation formatting & management
+├── hypothesis.py        # 💡 Hypothesis generation
+├── reporter.py          # 📄 Report assembly & rendering
+└── llm_client.py        # 🤖 OpenAI wrapper with mock fallback
+tests/
+└── test_research_agent.py  # Unit + integration tests (no API key needed)
+```
+
+---
+
+## Running Tests
+
+```bash
+pip install -r requirements-dev.txt
+pytest tests/ -v
+# With coverage:
+pytest tests/ -v --cov=research_agent --cov-report=term-missing
+```
+
+---
+
+## Environment Variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `OPENAI_API_KEY` | _(none)_ | OpenAI API key. Omit for mock mode. |
+| `OPENAI_MODEL` | `gpt-4o` | Chat model to use |
+| `SEMANTIC_SCHOLAR_API_KEY` | _(none)_ | Optional S2 key for higher rate limits |
+| `REPORT_OUTPUT_DIR` | `reports` | Directory for saved reports |
+
+---
+
+## License
+
+MIT
