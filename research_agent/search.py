@@ -120,13 +120,16 @@ class ArxivProvider(BaseProvider):
     _BASE = "https://export.arxiv.org/api/query"
 
     def fetch(self, query: SearchQuery) -> List[Paper]:
-        search_terms = " AND ".join(
-            f"all:{kw}" for kw in (query.keywords or [query.raw])
-        )
+        # Use the raw query as a phrase search — most accurate and broadest.
+        # Wrapping in quotes finds exact phrase first; fallback is keyword OR search.
+        raw_q = query.raw.strip()
+        search_terms = f'all:"{raw_q}"'
+        max_r = query.max_results or config.arxiv_max_results
+
         params = urllib.parse.urlencode(
             {
                 "search_query": search_terms,
-                "max_results": query.max_results or config.arxiv_max_results,
+                "max_results": max_r,
                 "sortBy": "relevance",
                 "sortOrder": "descending",
             }
@@ -140,7 +143,24 @@ class ArxivProvider(BaseProvider):
             logger.warning("arXiv request failed: %s", exc)
             return []
 
-        return self._parse(xml_data)
+        papers = self._parse(xml_data)
+
+        # If phrase search returned nothing (topic not on arXiv), fall back to
+        # keyword OR search so we always return something.
+        if not papers and query.keywords:
+            or_terms = " OR ".join(f"all:{kw}" for kw in query.keywords)
+            params2 = urllib.parse.urlencode(
+                {"search_query": or_terms, "max_results": max_r,
+                 "sortBy": "relevance", "sortOrder": "descending"}
+            )
+            url2 = f"{self._BASE}?{params2}"
+            logger.debug("arXiv fallback OR request: %s", url2)
+            try:
+                papers = self._parse(_fetch_url(url2))
+            except Exception as exc:
+                logger.warning("arXiv fallback failed: %s", exc)
+
+        return papers
 
     def _parse(self, xml_data: bytes) -> List[Paper]:
         root = ET.fromstring(xml_data)
@@ -194,7 +214,8 @@ class SemanticScholarProvider(BaseProvider):
     _FIELDS = "paperId,title,authors,abstract,year,venue,externalIds,citationCount,openAccessPdf"
 
     def fetch(self, query: SearchQuery) -> List[Paper]:
-        q = " ".join(query.keywords) if query.keywords else query.raw
+        # Always use the raw query — it's more precise than individual keywords
+        q = query.raw
         params = urllib.parse.urlencode(
             {
                 "query": q,
@@ -259,10 +280,9 @@ class CrossRefProvider(BaseProvider):
     _BASE = "https://api.crossref.org/works"
 
     def fetch(self, query: SearchQuery) -> List[Paper]:
-        q = " ".join(query.keywords) if query.keywords else query.raw
         params = urllib.parse.urlencode(
             {
-                "query": q,
+                "query": query.raw,
                 "rows": min(query.max_results or 10, 20),
                 "select": "DOI,title,author,abstract,published,container-title,is-referenced-by-count,URL",
             }
@@ -344,10 +364,9 @@ class EuropePMCProvider(BaseProvider):
     _BASE = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 
     def fetch(self, query: SearchQuery) -> List[Paper]:
-        q = " ".join(query.keywords) if query.keywords else query.raw
         params = urllib.parse.urlencode(
             {
-                "query": q,
+                "query": query.raw,
                 "pageSize": min(query.max_results or 10, 25),
                 "format": "json",
                 "resultType": "core",
