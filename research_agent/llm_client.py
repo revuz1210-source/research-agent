@@ -39,33 +39,58 @@ def _openai_chat(system_prompt: str, user_prompt: str) -> str:
 
 # ── Mock (offline) helper ─────────────────────────────────────────────────────
 
-_MOCK_RESPONSES = {
+_MOCK_TEMPLATES = {
     "summarize": (
-        "This paper investigates the research question using rigorous methodology. "
+        "This paper investigates {topic} using rigorous methodology. "
         "The authors present novel findings that advance understanding in this domain. "
-        "Key contributions include theoretical insights and empirical validation."
+        "Key contributions include theoretical insights and empirical validation of {topic}-related methods."
     ),
     "hypothesis": (
-        "1. The proposed mechanism may be influenced by previously unexplored contextual factors.\n"
-        "2. Cross-domain transfer of findings could yield improvements in adjacent fields.\n"
-        "3. Longitudinal analysis might reveal temporal dynamics not captured in prior work."
+        "### Hypothesis 1\n"
+        "**Statement:** Advances in {topic} may be accelerated by incorporating cross-domain knowledge transfer.\n"
+        "**Rationale:** Recent literature suggests that methods from adjacent fields have shown promise when applied to {topic}. Further investigation is warranted.\n"
+        "**Confidence:** 0.65\n\n"
+        "### Hypothesis 2\n"
+        "**Statement:** The scalability of current {topic} approaches remains an open problem requiring novel architectural solutions.\n"
+        "**Rationale:** Multiple reviewed papers highlight performance degradation at scale. A unified framework specific to {topic} could address this gap.\n"
+        "**Confidence:** 0.72\n\n"
+        "### Hypothesis 3\n"
+        "**Statement:** Longitudinal datasets focused on {topic} would reveal temporal dynamics not captured in existing benchmarks.\n"
+        "**Rationale:** Most current work on {topic} relies on static snapshots. Dynamic evaluation protocols may expose important limitations.\n"
+        "**Confidence:** 0.58"
     ),
-    "keywords": "machine learning; deep learning; neural networks; research methodology",
     "report_section": (
-        "Based on the reviewed literature, the field has seen significant advances "
-        "in recent years. Multiple independent research groups have corroborated core "
-        "findings, lending confidence to emerging theoretical frameworks. "
-        "Further work is needed to resolve open questions around scalability and generalization."
+        "Research on {topic} has seen significant advances in recent years. "
+        "Multiple independent groups have explored {topic} from complementary angles, "
+        "lending confidence to emerging theoretical frameworks. "
+        "Key open questions remain around scalability, generalisation, and real-world applicability of {topic} methods. "
+        "The reviewed papers collectively highlight both the maturity and the frontier challenges of this field."
     ),
-    "default": "Generated content based on the provided research context.",
+    "default": "Generated content based on the provided research context regarding {topic}.",
 }
 
 
-def _mock_chat(task: str) -> str:
-    for key in _MOCK_RESPONSES:
+def _extract_topic_from_prompt(user_prompt: str) -> str:
+    """Pull the most informative phrase from the user prompt for mock personalisation."""
+    # Try to grab content after "Topic:" or "Research Topic:" labels
+    import re
+    m = re.search(r"(?:Research\s+)?Topic:\s*(.+)", user_prompt, re.I)
+    if m:
+        return m.group(1).strip()[:60]
+    # First non-empty line otherwise
+    for line in user_prompt.splitlines():
+        line = line.strip()
+        if len(line) > 8:
+            return line[:60]
+    return "this research area"
+
+
+def _mock_chat(task: str, user_prompt: str = "") -> str:
+    topic = _extract_topic_from_prompt(user_prompt)
+    for key, template in _MOCK_TEMPLATES.items():
         if key in task.lower():
-            return _MOCK_RESPONSES[key]
-    return _MOCK_RESPONSES["default"]
+            return template.format(topic=topic)
+    return _MOCK_TEMPLATES["default"].format(topic=topic)
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -74,15 +99,15 @@ def generate(system_prompt: str, user_prompt: str, task_hint: str = "default") -
     """
     Generate text via the configured LLM.
 
-    Falls back to deterministic mock output when OPENAI_API_KEY is absent,
+    Falls back to query-aware mock output when OPENAI_API_KEY is absent,
     so the full pipeline can be exercised without credentials.
     """
     if not config.openai_api_key:
         logger.debug("No API key — using mock LLM response for task: %s", task_hint)
-        return _mock_chat(task_hint)
+        return _mock_chat(task_hint, user_prompt)
 
     try:
         return _openai_chat(system_prompt, user_prompt)
     except Exception as exc:  # pragma: no cover
         logger.warning("LLM call failed (%s); falling back to mock.", exc)
-        return _mock_chat(task_hint)
+        return _mock_chat(task_hint, user_prompt)

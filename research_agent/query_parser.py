@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 from typing import List, Optional
 
+from research_agent.config import config
 from research_agent.models import SearchQuery
 from research_agent import llm_client
 
@@ -88,13 +89,13 @@ def parse_query(
     """
     date_from, date_to = _extract_year_range(raw)
 
-    # Keyword extraction: LLM first, heuristic fallback
-    if use_llm:
-        keywords = _llm_keywords(raw)
-        if not keywords:
-            keywords = _heuristic_keywords(raw)
-    else:
-        keywords = _heuristic_keywords(raw)
+    # Keyword extraction: always use heuristic first (works offline, query-specific),
+    # then optionally enrich with LLM when an API key is available.
+    keywords = _heuristic_keywords(raw)
+    if use_llm and config.openai_api_key:
+        llm_kws = _llm_keywords(raw)
+        if llm_kws:
+            keywords = llm_kws
 
     # Derive topic as the first 3 keywords joined
     topic = " ".join(keywords[:3]) if keywords else raw[:60]
