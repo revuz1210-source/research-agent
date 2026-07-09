@@ -92,10 +92,13 @@ run_btn = st.button("🚀 Run Research", type="primary", use_container_width=Tru
 # ── Pipeline execution ────────────────────────────────────────────────────────
 if run_btn and query.strip():
 
-    # Inject API key into environment for this session
+    # Write key into env — config properties read os.environ live, so this
+    # takes effect immediately for all modules in this rerun.
     if openai_key:
-        import os
         os.environ["OPENAI_API_KEY"] = openai_key
+    elif "OPENAI_API_KEY" in os.environ and not openai_key:
+        # User cleared the key field — remove it so mock mode activates
+        os.environ.pop("OPENAI_API_KEY", None)
 
     # Lazy import so the app starts quickly
     from research_agent.agent import ResearchAgent
