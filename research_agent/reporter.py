@@ -134,12 +134,16 @@ def build_report(
     methods_note = _generate_methods_note(papers)
     conclusion = _generate_conclusion(topic, papers, hypotheses)
 
-    # Build literature-review section from paper summaries
-    lit_review_parts = [
-        f"### {p.title}\n\n{p.summary or p.abstract}"
-        for p in papers
-    ]
-    literature_review = "\n\n".join(lit_review_parts) if lit_review_parts else "(No papers found.)"
+    # Build literature-review section from paper summaries.
+    # Only include papers that have actual content (abstract or summary).
+    # Use bold title instead of ### heading to avoid giant Markdown headers in the UI.
+    lit_review_parts = []
+    for p in papers:
+        body = p.summary or p.abstract
+        if not body or body.startswith("No abstract available"):
+            continue
+        lit_review_parts.append(f"**{p.title}** ({p.year or 'n.d.'})\n\n{body}")
+    literature_review = "\n\n---\n\n".join(lit_review_parts) if lit_review_parts else "(No paper abstracts available.)"
 
     # Hypothesis section
     hyp_section_parts = []

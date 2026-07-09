@@ -479,7 +479,9 @@ def search(
     for provider in available:
         logger.info("Searching provider: %s", provider.name)
         results = provider.fetch(query)
-        logger.info("  → %d results", len(results))
+        # Drop papers with no title or empty/missing abstract — they add noise
+        results = [p for p in results if p.title.strip() and p.abstract.strip()]
+        logger.info("  -> %d results (with abstracts)", len(results))
         all_papers.extend(results)
 
     deduplicated = _deduplicate(all_papers)
