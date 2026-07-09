@@ -99,8 +99,8 @@ def generate(system_prompt: str, user_prompt: str, task_hint: str = "default") -
     """
     Generate text via the configured LLM.
 
-    Falls back to query-aware mock output when OPENAI_API_KEY is absent,
-    so the full pipeline can be exercised without credentials.
+    Falls back to query-aware mock output when OPENAI_API_KEY is absent
+    or the API call fails, so the full pipeline always produces output.
     """
     if not config.openai_api_key:
         logger.debug("No API key — using mock LLM response for task: %s", task_hint)
@@ -108,6 +108,17 @@ def generate(system_prompt: str, user_prompt: str, task_hint: str = "default") -
 
     try:
         return _openai_chat(system_prompt, user_prompt)
-    except Exception as exc:  # pragma: no cover
+    except Exception as exc:
         logger.warning("LLM call failed (%s); falling back to mock.", exc)
         return _mock_chat(task_hint, user_prompt)
+
+
+def generate_strict(system_prompt: str, user_prompt: str) -> str:
+    """
+    Like ``generate`` but raises on failure instead of returning mock text.
+    Used by the keyword extractor so a bad/expired key causes a clean
+    fallback to heuristics rather than returning prose as keywords.
+    """
+    if not config.openai_api_key:
+        raise RuntimeError("No API key configured")
+    return _openai_chat(system_prompt, user_prompt)

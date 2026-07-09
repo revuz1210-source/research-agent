@@ -42,14 +42,31 @@ def _heuristic_keywords(text: str) -> List[str]:
 
 
 def _llm_keywords(text: str) -> List[str]:
-    """Use the LLM to extract domain-specific keywords."""
+    """
+    Use the LLM to extract domain-specific keywords.
+    Returns empty list if the LLM is unavailable or returns non-keyword prose,
+    so the caller always falls back to heuristic extraction.
+    """
     system = (
         "You are a research librarian. Extract the most important academic "
         "keywords from the user's query. Return ONLY a semicolon-separated list "
-        "of keywords with no extra text."
+        "of keywords with no extra text. Example: protein folding; transformer; AlphaFold"
     )
-    raw = llm_client.generate(system, text, task_hint="keywords")
-    return [kw.strip() for kw in raw.split(";") if kw.strip()]
+    try:
+        raw = llm_client.generate_strict(system, text)
+    except Exception:
+        return []
+
+    candidates = [kw.strip() for kw in raw.split(";") if kw.strip()]
+
+    # Sanity check: real keywords are short (≤5 words each) and there are
+    # multiple of them. If the LLM returned a prose sentence, discard it.
+    if not candidates:
+        return []
+    if len(candidates) == 1 and len(candidates[0].split()) > 6:
+        return []   # looks like a sentence, not keywords
+    # Filter out any individual "keyword" that is suspiciously long
+    return [kw for kw in candidates if len(kw.split()) <= 5][:8]
 
 
 def _extract_year_range(text: str):

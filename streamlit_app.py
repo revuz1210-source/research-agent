@@ -10,24 +10,22 @@ Deploy free:
     Add OPENAI_API_KEY in the Secrets section.
 """
 
-import io
 import json
-
 import os
+
 import streamlit as st
 
-# ── Inject secrets from Streamlit Cloud into env (no-op locally) ──────────────
-def _load_streamlit_secrets():
+# ── Load secrets (Streamlit Cloud) and .env (local) ──────────────────────────
+def _load_secrets():
     try:
-        import streamlit as _st
         for key in ("OPENAI_API_KEY", "SEMANTIC_SCHOLAR_API_KEY"):
-            val = _st.secrets.get(key, "")
+            val = st.secrets.get(key, "")
             if val and not os.environ.get(key):
                 os.environ[key] = val
     except Exception:
         pass
 
-_load_streamlit_secrets()
+_load_secrets()
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -37,18 +35,24 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Sidebar — configuration ───────────────────────────────────────────────────
+# ── Session state — persists across every Streamlit rerun ────────────────────
+# This is the KEY fix: results are stored here so switching tabs / changing
+# sidebar settings never wipes the displayed papers.
+if "report"       not in st.session_state: st.session_state.report       = None
+if "last_query"   not in st.session_state: st.session_state.last_query   = ""
+if "running"      not in st.session_state: st.session_state.running      = False
+
+# ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.title("⚙️ Settings")
 
-    # Pre-fill from env / Streamlit secrets if already set
     _env_key = os.environ.get("OPENAI_API_KEY", "")
     openai_key = st.text_input(
         "OpenAI API Key",
         value=_env_key,
         type="password",
         placeholder="sk-… (leave blank for mock mode)",
-        help="Leave blank to run in offline mock mode. Set via Streamlit Secrets on the cloud.",
+        help="Leave blank to use free search (no AI summaries). Set once in your .env file.",
     )
 
     st.divider()
@@ -63,19 +67,27 @@ with st.sidebar:
         "Search providers",
         options=["arxiv", "crossref", "europepmc", "semantic_scholar"],
         default=["arxiv", "crossref", "europepmc"],
-        help=(
-            "arXiv, CrossRef, and Europe PMC are 100% free — no key needed.\n"
-            "Semantic Scholar requires a free API key to avoid rate limits."
-        ),
+        help="arXiv, CrossRef and Europe PMC are free — no key needed.",
     )
 
     generate_hyp = st.toggle("Generate hypotheses", value=True)
     report_fmt   = st.radio("Export format", ["markdown", "json"], horizontal=True)
 
     st.divider()
+
+    # Show which query produced the current results
+    if st.session_state.last_query:
+        st.caption(f"Showing results for: **{st.session_state.last_query}**")
+
+    if st.session_state.report:
+        if st.button("🗑️ Clear results", use_container_width=True):
+            st.session_state.report     = None
+            st.session_state.last_query = ""
+            st.rerun()
+
     st.caption(
-        "📖 **Mock mode** — runs without an API key using placeholder responses. "
-        "Useful for testing the full pipeline offline."
+        "📖 **Mock mode** — runs without an API key. "
+        "Real papers are always fetched; AI text is placeholder only."
     )
 
 # ── Main area ─────────────────────────────────────────────────────────────────
@@ -84,23 +96,28 @@ st.caption("AI-powered literature search · summarisation · hypothesis generati
 
 query = st.text_input(
     "Enter your research question or topic",
-    placeholder="e.g.  transformer models for protein structure prediction",
+    placeholder="e.g.  CRISPR gene editing safety",
+    key="query_input",
 )
 
 run_btn = st.button("🚀 Run Research", type="primary", use_container_width=True)
 
-# ── Pipeline execution ────────────────────────────────────────────────────────
-if run_btn and query.strip():
+# ── Update env key on every rerun so it's always current ─────────────────────
+if openai_key:
+    os.environ["OPENAI_API_KEY"] = openai_key
+elif not openai_key:
+    os.environ.pop("OPENAI_API_KEY", None)
 
-    # Write key into env — config properties read os.environ live, so this
-    # takes effect immediately for all modules in this rerun.
-    if openai_key:
-        os.environ["OPENAI_API_KEY"] = openai_key
-    elif "OPENAI_API_KEY" in os.environ and not openai_key:
-        # User cleared the key field — remove it so mock mode activates
-        os.environ.pop("OPENAI_API_KEY", None)
+# ── Run pipeline when button clicked ─────────────────────────────────────────
+if run_btn:
+    if not query.strip():
+        st.warning("Please enter a research question first.")
+        st.stop()
 
-    # Lazy import so the app starts quickly
+    # Clear previous results immediately so stale data is never shown
+    st.session_state.report     = None
+    st.session_state.last_query = query.strip()
+
     from research_agent.agent import ResearchAgent
     from research_agent import reporter as rep_module
 
@@ -116,29 +133,40 @@ if run_btn and query.strip():
         progress.progress(pct, text=msg)
         status.caption(msg)
 
-    tick(10, "🔍 Parsing query & extracting keywords…")
+    tick(10,  "🔍 Parsing query & extracting keywords…")
+    tick(20,  "🌐 Searching arXiv, CrossRef, Europe PMC…")
 
-    with st.spinner("Running full pipeline — this may take 20–60 s…"):
+    with st.spinner(f'Searching for: "{query.strip()}" — please wait…'):
         try:
-            tick(20, "🌐 Searching arXiv and Semantic Scholar…")
             report = agent.run(
                 raw_query=query.strip(),
                 max_results=int(max_results),
                 generate_hypotheses=generate_hyp,
                 save_report=False,
             )
+            # Store in session state — survives tab switches and sidebar changes
+            st.session_state.report = report
             tick(100, "✅ Done!")
         except Exception as exc:
             st.error(f"Pipeline error: {exc}")
+            progress.empty()
+            status.empty()
             st.stop()
 
     progress.empty()
     status.empty()
+    # Force a clean rerun so the results render fresh with no stale widgets
+    st.rerun()
 
-    # ── Results ───────────────────────────────────────────────────────────────
+# ── Display results from session state ───────────────────────────────────────
+report = st.session_state.report
+
+if report is not None:
+    from research_agent import reporter as rep_module
+
     st.success(
-        f"Found **{len(report.papers)} papers** · "
-        f"Generated **{len(report.hypotheses)} hypotheses**"
+        f'Results for: **"{st.session_state.last_query}"** — '
+        f'**{len(report.papers)} papers** · **{len(report.hypotheses)} hypotheses**'
     )
 
     tab_intro, tab_lit, tab_hyp, tab_concl, tab_refs, tab_export = st.tabs([
@@ -155,15 +183,18 @@ if run_btn and query.strip():
 
     with tab_lit:
         st.markdown(report.section("literature_review") or "_No literature review generated._")
-
         st.divider()
-        st.subheader("Papers Retrieved")
+        st.subheader(f"Papers Retrieved ({len(report.papers)})")
         for i, p in enumerate(report.papers, 1):
             with st.expander(f"{i}. {p.title} ({p.year or 'n.d.'})"):
                 cols = st.columns([3, 1])
                 with cols[0]:
                     st.caption(f"**Authors:** {', '.join(a.name for a in p.authors[:5])}")
-                    st.caption(f"**Venue:** {p.venue or '—'}  |  **Citations:** {p.citation_count}  |  **Source:** {p.source}")
+                    st.caption(
+                        f"**Venue:** {p.venue or '—'}  |  "
+                        f"**Citations:** {p.citation_count}  |  "
+                        f"**Source:** {p.source}"
+                    )
                     if p.url:
                         st.markdown(f"[🔗 View paper]({p.url})")
                 with cols[1]:
@@ -180,7 +211,6 @@ if run_btn and query.strip():
                 with st.container(border=True):
                     st.markdown(f"**H{i}: {h.statement}**")
                     st.caption(f"Rationale: {h.rationale}")
-                    conf_color = "green" if h.confidence >= 0.6 else "orange" if h.confidence >= 0.4 else "red"
                     st.progress(h.confidence, text=f"Confidence: {h.confidence:.0%}")
         else:
             st.info("Hypothesis generation was disabled or returned no results.")
@@ -217,16 +247,14 @@ if run_btn and query.strip():
             with st.expander("Preview"):
                 st.json(json.loads(content))
 
-elif run_btn and not query.strip():
-    st.warning("Please enter a research question first.")
-
 else:
-    # Landing state
+    # Landing page — no results yet
     st.info(
-        "👆 Enter a research question above and click **Run Research** to start.\n\n"
-        "**Example queries:**\n"
-        "- *transformer models for protein structure prediction*\n"
-        "- *CRISPR off-target effects safety 2022-2024*\n"
+        "👆 Type a research topic above and click **Run Research**.\n\n"
+        "**Try these:**\n"
+        "- *CRISPR gene editing safety*\n"
+        "- *black hole neutron star mergers*\n"
+        "- *ocean microplastics pollution*\n"
         "- *quantum error correction surface codes*\n"
-        "- *large language model reasoning capabilities*"
+        "- *transformer protein structure prediction*"
     )
