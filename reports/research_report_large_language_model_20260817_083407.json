@@ -1,0 +1,602 @@
+{
+  "title": "Research Report: Large Language Model",
+  "query": "large language model reasoning advances",
+  "generated_at": "2026-08-17T08:34:07.787439",
+  "papers": [
+    {
+      "paper_id": "2309.02144v1",
+      "title": "Making Large Language Models Better Reasoners with Alignment",
+      "authors": [
+        "Peiyi Wang",
+        "Lei Li",
+        "Liang Chen",
+        "Feifan Song",
+        "Binghuai Lin",
+        "Yunbo Cao",
+        "Tianyu Liu",
+        "Zhifang Sui"
+      ],
+      "abstract": "Reasoning is a cognitive process of using evidence to reach a sound conclusion. The reasoning capability is essential for large language models (LLMs) to serve as the brain of the artificial general intelligence agent. Recent studies reveal that fine-tuning LLMs on data with the chain of thought (COT) reasoning process can significantly enhance their reasoning capabilities. However, we find that the fine-tuned LLMs suffer from an \\textit{Assessment Misalignment} problem, i.e., they frequently assign higher scores to subpar COTs, leading to potential limitations in their reasoning abilities. To address this problem, we introduce an \\textit{Alignment Fine-Tuning (AFT)} paradigm, which involves three steps: 1) fine-tuning LLMs with COT training data; 2) generating multiple COT responses for each question, and categorizing them into positive and negative ones based on whether they achieve the correct answer; 3) calibrating the scores of positive and negative responses given by LLMs with a novel constraint alignment loss. Specifically, the constraint alignment loss has two objectives: a) Alignment, which guarantees that positive scores surpass negative scores to encourage answers with high-quality COTs; b) Constraint, which keeps the negative scores confined to a reasonable range to prevent the model degradation. Beyond just the binary positive and negative feedback, the constraint alignment loss can be seamlessly adapted to the ranking situations when ranking feedback is accessible. Furthermore, we also delve deeply into recent ranking-based alignment methods, such as DPO, RRHF, and PRO, and discover that the constraint, which has been overlooked by these approaches, is also crucial for their performance. Extensive experiments on four reasoning benchmarks with both binary and ranking feedback demonstrate the effectiveness of AFT.",
+      "year": 2023,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2309.02144v1",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Making Large Language Models Better Reasoners with Al using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Making Large Language Models Better Reasoners with Al-related methods."
+    },
+    {
+      "paper_id": "2508.04848v1",
+      "title": "Large Language Models Reasoning Abilities Under Non-Ideal Conditions After RL-Fine-Tuning",
+      "authors": [
+        "Chang Tian",
+        "Matthew B. Blaschko",
+        "Mingzhe Xing",
+        "Xiuxing Li",
+        "Yinliang Yue",
+        "Marie-Francine Moens"
+      ],
+      "abstract": "Reinforcement learning (RL) has become a key technique for enhancing the reasoning abilities of large language models (LLMs), with policy-gradient algorithms dominating the post-training stage because of their efficiency and effectiveness. However, most existing benchmarks evaluate large-language-model reasoning under idealized settings, overlooking performance in realistic, non-ideal scenarios. We identify three representative non-ideal scenarios with practical relevance: summary inference, fine-grained noise suppression, and contextual filtering. We introduce a new research direction guided by brain-science findings that human reasoning remains reliable under imperfect inputs. We formally define and evaluate these challenging scenarios. We fine-tune three LLMs and a state-of-the-art large vision-language model (LVLM) using RL with a representative policy-gradient algorithm and then test their performance on eight public datasets. Our results reveal that while RL fine-tuning improves baseline reasoning under idealized settings, performance declines significantly across all three non-ideal scenarios, exposing critical limitations in advanced reasoning capabilities. Although we propose a scenario-specific remediation method, our results suggest current methods leave these reasoning deficits largely unresolved. This work highlights that the reasoning abilities of large models are often overstated and underscores the importance of evaluating models under non-ideal scenarios. The code and data will be released at XXXX.",
+      "year": 2025,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2508.04848v1",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Large Language Models Reasoning Abilities Under Non-I using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Large Language Models Reasoning Abilities Under Non-I-related methods."
+    },
+    {
+      "paper_id": "2604.14214v1",
+      "title": "CROP: Token-Efficient Reasoning in Large Language Models via Regularized Prompt Optimization",
+      "authors": [
+        "Deep Shah",
+        "Sanket Badhe",
+        "Nehal Kathrotia",
+        "Priyanka Tiwari"
+      ],
+      "abstract": "Large Language Models utilizing reasoning techniques improve task performance but incur significant latency and token costs due to verbose generation. Existing automatic prompt optimization(APO) frameworks target task accuracy exclusively at the expense of generating long reasoning traces. We propose Cost-Regularized Optimization of Prompts (CROP), an APO method that introduces regularization on response length by generating textual feedback in addition to standard accuracy feedback. This forces the optimization process to produce prompts that elicit concise responses containing only critical information and reasoning. We evaluate our approach on complex reasoning datasets, specifically GSM8K, LogiQA and BIG-Bench Hard. We achieved an 80.6\\% reduction in token consumption while maintaining competitive accuracy, seeing only a nominal decline in performance. This presents a pragmatic solution for deploying token-efficient and cost-effective agentic AI systems in production pipelines.",
+      "year": 2026,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2604.14214v1",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: CROP: Token-Efficient Reasoning in Large Language Mod using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: CROP: Token-Efficient Reasoning in Large Language Mod-related methods."
+    },
+    {
+      "paper_id": "2308.16118v2",
+      "title": "Response: Emergent analogical reasoning in large language models",
+      "authors": [
+        "Damian Hodel",
+        "Jevin West"
+      ],
+      "abstract": "In their recent Nature Human Behaviour paper, \"Emergent analogical reasoning in large language models,\" (Webb, Holyoak, and Lu, 2023) the authors argue that \"large language models such as GPT-3 have acquired an emergent ability to find zero-shot solutions to a broad range of analogy problems.\" In this response, we provide counterexamples of the letter string analogies. In our tests, GPT-3 fails to solve simplest variations of the original tasks, whereas human performance remains consistently high across all modified versions. Zero-shot reasoning is an extraordinary claim that requires extraordinary evidence. We do not see that evidence in our experiments. To strengthen claims of humanlike reasoning such as zero-shot reasoning, it is important that the field develop approaches that rule out data memorization.",
+      "year": 2023,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2308.16118v2",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Response: Emergent analogical reasoning in large lang using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Response: Emergent analogical reasoning in large lang-related methods."
+    },
+    {
+      "paper_id": "2510.00071v2",
+      "title": "ARS: Adaptive Reasoning Suppression for Efficient Large Reasoning Language Models",
+      "authors": [
+        "Dongqi Zheng"
+      ],
+      "abstract": "Large Reasoning Language Models (LRLMs or LRMs) demonstrate remarkable capabilities in complex reasoning tasks, but suffer from significant computational inefficiencies due to overthinking phenomena. Existing efficient reasoning methods face the challenge of balancing reasoning quality with inference cost reduction. We propose \\textbf{Adaptive Reasoning Suppression (ARS)}, a novel training-free approach that dynamically suppresses redundant reasoning steps while preserving accuracy through adaptive certainty monitoring. ARS introduces a multi-checkpoint certainty estimation mechanism with progressive suppression thresholds, achieving superior efficiency compared to static suppression methods. Our extensive evaluation across mathematical reasoning benchmarks using multiple model architectures demonstrates that ARS achieves up to 53%, 46.1%, and 57.9% in token, latency and energy reduction, while maintaining or improving accuracy.",
+      "year": 2025,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2510.00071v2",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: ARS: Adaptive Reasoning Suppression for Efficient Lar using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: ARS: Adaptive Reasoning Suppression for Efficient Lar-related methods."
+    },
+    {
+      "paper_id": "2504.16021v1",
+      "title": "Navigating the State of Cognitive Flow: Context-Aware AI Interventions for Effective Reasoning Support",
+      "authors": [
+        "Dinithi Dissanayake",
+        "Suranga Nanayakkara"
+      ],
+      "abstract": "Flow theory describes an optimal cognitive state where individuals experience deep focus and intrinsic motivation when a task's difficulty aligns with their skill level. In AI-augmented reasoning, interventions that disrupt the state of cognitive flow can hinder rather than enhance decision-making. This paper proposes a context-aware cognitive augmentation framework that adapts interventions based on three key contextual factors: type, timing, and scale. By leveraging multimodal behavioral cues (e.g., gaze behavior, typing hesitation, interaction speed), AI can dynamically adjust cognitive support to maintain or restore flow. We introduce the concept of cognitive flow, an extension of flow theory in AI-augmented reasoning, where interventions are personalized, adaptive, and minimally intrusive. By shifting from static interventions to context-aware augmentation, our approach ensures that AI systems support deep engagement in complex decision-making and reasoning without disrupting cognitive immersion.",
+      "year": 2025,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2504.16021v1",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Navigating the State of Cognitive Flow: Context-Aware using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Navigating the State of Cognitive Flow: Context-Aware-related methods."
+    },
+    {
+      "paper_id": "2512.13930v1",
+      "title": "Hierarchical Multi-agent Large Language Model Reasoning for Autonomous Functional Materials Discovery",
+      "authors": [
+        "Samuel Rothfarb",
+        "Megan C. Davis",
+        "Ivana Matanovic",
+        "Baikun Li",
+        "Edward F. Holby",
+        "Wilton J. M. Kort-Kamp"
+      ],
+      "abstract": "Artificial intelligence is reshaping scientific exploration, but most methods automate procedural tasks without engaging in scientific reasoning, limiting autonomy in discovery. We introduce Materials Agents for Simulation and Theory in Electronic-structure Reasoning (MASTER), an active learning framework where large language models autonomously design, execute, and interpret atomistic simulations. In MASTER, a multimodal system translates natural language into density functional theory workflows, while higher-level reasoning agents guide discovery through a hierarchy of strategies, including a single agent baseline and three multi-agent approaches: peer review, triage-ranking, and triage-forms. Across two chemical applications, CO adsorption on Cu-surface transition metal (M) adatoms and on M-N-C catalysts, reasoning-driven exploration reduces required atomistic simulations by up to 90% relative to trial-and-error selection. Reasoning trajectories reveal chemically grounded decisions that cannot be explained by stochastic sampling or semantic bias. Altogether, multi-agent collaboration accelerates materials discovery and marks a new paradigm for autonomous scientific exploration.",
+      "year": 2025,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2512.13930v1",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Hierarchical Multi-agent Large Language Model Reasoni using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Hierarchical Multi-agent Large Language Model Reasoni-related methods."
+    },
+    {
+      "paper_id": "2312.05434v1",
+      "title": "Beneath the Surface: Unveiling Harmful Memes with Multimodal Reasoning Distilled from Large Language Models",
+      "authors": [
+        "Hongzhan Lin",
+        "Ziyang Luo",
+        "Jing Ma",
+        "Long Chen"
+      ],
+      "abstract": "The age of social media is rife with memes. Understanding and detecting harmful memes pose a significant challenge due to their implicit meaning that is not explicitly conveyed through the surface text and image. However, existing harmful meme detection approaches only recognize superficial harm-indicative signals in an end-to-end classification manner but ignore in-depth cognition of the meme text and image. In this paper, we attempt to detect harmful memes based on advanced reasoning over the interplay of multimodal information in memes. Inspired by the success of Large Language Models (LLMs) on complex reasoning, we first conduct abductive reasoning with LLMs. Then we propose a novel generative framework to learn reasonable thoughts from LLMs for better multimodal fusion and lightweight fine-tuning, which consists of two training stages: 1) Distill multimodal reasoning knowledge from LLMs; and 2) Fine-tune the generative framework to infer harmfulness. Extensive experiments conducted on three meme datasets demonstrate that our proposed approach achieves superior performance than state-of-the-art methods on the harmful meme detection task.",
+      "year": 2023,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2312.05434v1",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Beneath the Surface: Unveiling Harmful Memes with Mul using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Beneath the Surface: Unveiling Harmful Memes with Mul-related methods."
+    },
+    {
+      "paper_id": "2402.11651v2",
+      "title": "Learning From Failure: Integrating Negative Examples when Fine-tuning Large Language Models as Agents",
+      "authors": [
+        "Renxi Wang",
+        "Haonan Li",
+        "Xudong Han",
+        "Yixuan Zhang",
+        "Timothy Baldwin"
+      ],
+      "abstract": "Large language models (LLMs) have achieved success in acting as agents, which interact with environments through tools such as search engines. However, LLMs are optimized for language generation instead of tool use during training or alignment, limiting their effectiveness as agents. To resolve this problem, previous work has first collected interaction trajectories between LLMs and environments, using only trajectories that successfully finished the task to fine-tune smaller models, making fine-tuning data scarce and acquiring it both difficult and costly. Discarding failed trajectories also leads to significant wastage of data and resources and limits the possible optimization paths during fine-tuning. In this paper, we argue that unsuccessful trajectories offer valuable insights, and LLMs can learn from these trajectories through appropriate quality control and fine-tuning strategies. By simply adding a prefix or suffix that tells the model whether to generate a successful trajectory during training, we improve model performance by a large margin on mathematical reasoning, multi-hop question answering, and strategic question answering tasks. We further analyze the inference results and find that our method provides a better trade-off between valuable information and errors in unsuccessful trajectories. To our knowledge, we are the first to demonstrate the value of negative trajectories and their application in agent-tunning scenarios. Our findings offer guidance for developing better agent-tuning methods and low-resource data usage techniques.",
+      "year": 2024,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2402.11651v2",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Learning From Failure: Integrating Negative Examples  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Learning From Failure: Integrating Negative Examples -related methods."
+    },
+    {
+      "paper_id": "2407.12036v2",
+      "title": "Exploring Advanced Large Language Models with LLMsuite",
+      "authors": [
+        "Giorgio Roffo"
+      ],
+      "abstract": "This tutorial explores the advancements and challenges in the development of Large Language Models (LLMs) such as ChatGPT and Gemini. It addresses inherent limitations like temporal knowledge cutoffs, mathematical inaccuracies, and the generation of incorrect information, proposing solutions like Retrieval Augmented Generation (RAG), Program-Aided Language Models (PAL), and frameworks such as ReAct and LangChain. The integration of these techniques enhances LLM performance and reliability, especially in multi-step reasoning and complex task execution. The paper also covers fine-tuning strategies, including instruction fine-tuning, parameter-efficient methods like LoRA, and Reinforcement Learning from Human Feedback (RLHF) as well as Reinforced Self-Training (ReST). Additionally, it provides a comprehensive survey of transformer architectures and training techniques for LLMs. The source code can be accessed by contacting the author via email for a request.",
+      "year": 2024,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2407.12036v2",
+      "doi": "https://doi.org/10.13140/RG.2.2.11774.80963",
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Exploring Advanced Large Language Models with LLMsuit using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Exploring Advanced Large Language Models with LLMsuit-related methods."
+    },
+    {
+      "paper_id": "2502.17419v6",
+      "title": "From System 1 to System 2: A Survey of Reasoning Large Language Models",
+      "authors": [
+        "Zhong-Zhi Li",
+        "Duzhen Zhang",
+        "Ming-Liang Zhang",
+        "Jiaxin Zhang",
+        "Zengyan Liu",
+        "Yuxuan Yao",
+        "Haotian Xu",
+        "Junhao Zheng",
+        "Pei-Jie Wang",
+        "Xiuyi Chen",
+        "Yingying Zhang",
+        "Fei Yin",
+        "Jiahua Dong",
+        "Zhiwei Li",
+        "Bao-Long Bi",
+        "Ling-Rui Mei",
+        "Junfeng Fang",
+        "Xiao Liang",
+        "Zhijiang Guo",
+        "Le Song",
+        "Cheng-Lin Liu"
+      ],
+      "abstract": "Achieving human-level intelligence requires refining the transition from the fast, intuitive System 1 to the slower, more deliberate System 2 reasoning. While System 1 excels in quick, heuristic decisions, System 2 relies on logical reasoning for more accurate judgments and reduced biases. Foundational Large Language Models (LLMs) excel at fast decision-making but lack the depth for complex reasoning, as they have not yet fully embraced the step-by-step analysis characteristic of true System 2 thinking. Recently, reasoning LLMs like OpenAI's o1/o3 and DeepSeek's R1 have demonstrated expert-level performance in fields such as mathematics and coding, closely mimicking the deliberate reasoning of System 2 and showcasing human-like cognitive abilities. This survey begins with a brief overview of the progress in foundational LLMs and the early development of System 2 technologies, exploring how their combination has paved the way for reasoning LLMs. Next, we discuss how to construct reasoning LLMs, analyzing their features, the core methods enabling advanced reasoning, and the evolution of various reasoning LLMs. Additionally, we provide an overview of reasoning benchmarks, offering an in-depth comparison of the performance of representative reasoning LLMs. Finally, we explore promising directions for advancing reasoning LLMs and maintain a real-time \\href{https://github.com/zzli2022/Awesome-Slow-Reason-System}{GitHub Repository} to track the latest developments. We hope this survey will serve as a valuable resource to inspire innovation and drive progress in this rapidly evolving field.",
+      "year": 2025,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2502.17419v6",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: From System 1 to System 2: A Survey of Reasoning Larg using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: From System 1 to System 2: A Survey of Reasoning Larg-related methods."
+    },
+    {
+      "paper_id": "2506.18167v4",
+      "title": "Understanding Reasoning in Thinking Language Models via Steering Vectors",
+      "authors": [
+        "Constantin Venhoff",
+        "Iván Arcuschin",
+        "Philip Torr",
+        "Arthur Conmy",
+        "Neel Nanda"
+      ],
+      "abstract": "Recent advances in large language models (LLMs) have led to the development of thinking language models that generate extensive internal reasoning chains before producing responses. While these models achieve improved performance, controlling their reasoning processes remains challenging. This work presents a steering approach for thinking LLMs by analyzing and manipulating specific reasoning behaviors in DeepSeek-R1-Distill models. Through a systematic experiment on 500 tasks across 10 diverse categories, we identify several reasoning behaviors exhibited by thinking models, including expressing uncertainty, generating examples for hypothesis validation, and backtracking in reasoning chains. We demonstrate that these behaviors are mediated by linear directions in the model's activation space and can be controlled using steering vectors. By extracting and applying these vectors, we provide a method to modulate specific aspects of the model's reasoning process, such as its tendency to backtrack or express uncertainty. Our approach offers practical tools for steering reasoning processes in thinking models in a controlled and interpretable manner. We validate our steering method using three DeepSeek-R1-Distill models, demonstrating consistent control across different model architectures.",
+      "year": 2025,
+      "venue": null,
+      "url": "http://arxiv.org/abs/2506.18167v4",
+      "doi": null,
+      "source": "arxiv",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Understanding Reasoning in Thinking Language Models v using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Understanding Reasoning in Thinking Language Models v-related methods."
+    },
+    {
+      "paper_id": "10.21203/rs.3.rs-6170708/v1",
+      "title": "Condensed Reasoning Prompting: Efficient Strategies, Evaluations, and Trade Offs in Large Language Model Reasoning",
+      "authors": [
+        "Gautam Mehra",
+        "Danish Khan"
+      ],
+      "abstract": "Abstract\n        Recent advancements in large language models (LLMs) have demonstrated that explicitly prompting for intermediate reasoning steps significantly improves performance in complex tasks. Traditional chain of thought (CoT) prompting, however, can result in verbose outputs that increase both latency and computational cost. Condensed Reasoning Prompting (CRP) addresses this trade-off by encouraging more concise reasoning traces while maintaining high accuracy. In this paper, we systematically evaluate three prompting strategies: Chain Of Thought (CoT), Chain of Draft (CoD) and Condensed Reasoning across multiple datasets, including MMLU, Big Bench, arithmetic, and symbolic reasoning tasks. We report accuracy, average tokens per question, and a token effectiveness metric (accuracy divided by token count). Our experiments are conducted in a zero-shot setting, without specific system instructions to \"skip reasoning,\" providing a more realistic assessment of model capabilities. Results indicate that condensed prompts often match or exceed chain of thought accuracy while reducing token usage, thus offering significant gains in efficiency. We discuss the implications for real-world deployments, highlighting how CRP can enable more efficient LLM applications without compromising performance.",
+      "year": 2025,
+      "venue": null,
+      "url": "https://doi.org/10.21203/rs.3.rs-6170708/v1",
+      "doi": "10.21203/rs.3.rs-6170708/v1",
+      "source": "crossref",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Condensed Reasoning Prompting: Efficient Strategies,  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Condensed Reasoning Prompting: Efficient Strategies, -related methods."
+    },
+    {
+      "paper_id": "10.56028/aetr.17.1.1316.2026",
+      "title": "Data Synthesis for Large Language Model Reasoning: A Review of the Evolution from Surface Imitation to Deep Logic",
+      "authors": [
+        "Minyu Wu"
+      ],
+      "abstract": "Data synthesis is a key technical approach to solving the core challenge that large language models lack high-quality training data. In this paper, the data synthesis methods to improve the reasoning of large language models (LLMs) are sorted out, and a three-layer classification system is constructed, including Self-Synthesis, Self-Evolution and Reasoning-Oriented Synthesis. Taking Self-Instruct, WizardLM, Orca and CoT Prompting as examples, this paper not only traces the evolution of this field from self-generated instruction to process-aware reasoning trajectory, but also analyzes the practical framework of quality assessment and discusses ethical and legal challenges. Moreover, this paper looks forward to emerging directions such as real-time synthesis and multi-agent collaborative generation.",
+      "year": 2026,
+      "venue": "Advances in Engineering Technology Research",
+      "url": "https://doi.org/10.56028/aetr.17.1.1316.2026",
+      "doi": "10.56028/aetr.17.1.1316.2026",
+      "source": "crossref",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Data Synthesis for Large Language Model Reasoning: A  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Data Synthesis for Large Language Model Reasoning: A -related methods."
+    },
+    {
+      "paper_id": "10.36227/techrxiv.175493660.02041809/v1",
+      "title": "Training a Reasoning Large Language Model for Improving Power Flow Convergence",
+      "authors": [
+        "Yunqi Yan",
+        "Ying Chen",
+        "Tannan Xiao"
+      ],
+      "abstract": "Power flow convergence is a critical and longstanding challenge in power system operations, where \"blackbox\" data-driven approaches often lack the generalization and interpretability required for critical applications. This paper explores a new paradigm by leveraging the advanced reasoning capabilities of Large Language Models (LLMs) to address complex power system control problems, using power flow convergence as a key demonstration. We introduce a reinforcement learning framework to train a specialized LLM agent that makes sequential adjustments to system parameters. By employing a Chain-of-Thought (CoT) process, the agent emulates an expert's analytical steps, navigating the system from a non-convergent to a convergent state while providing a transparent decision-making trail. The framework features a two-stage training process: Supervised Fine-Tuning (SFT) to instill the desired reasoning format, followed by Reinforcement Learning with Verifiable Rewards (RLVR) to refine the decision-making policy. Case studies demonstrate that the trained LLM not only successfully guides non-convergent cases to a solution but also offers a high degree of interpretability by explicitly articulating its logic. Furthermore, the model exhibits strong zero-shot generalization to unseen power system topologies, showcasing the potential of reasoning-augmented LLMs as a more transparent, adaptable, and generalizable tool for power system control.",
+      "year": 2025,
+      "venue": null,
+      "url": "https://doi.org/10.36227/techrxiv.175493660.02041809/v1",
+      "doi": "10.36227/techrxiv.175493660.02041809/v1",
+      "source": "crossref",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Training a Reasoning Large Language Model for Improvi using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Training a Reasoning Large Language Model for Improvi-related methods."
+    },
+    {
+      "paper_id": "10.2139/ssrn.6617198",
+      "title": "AIgrafía: An Ethnographic Method for Extracting Executable Primitives from Large Language Model Reasoning",
+      "authors": [
+        "Tobias Garcia Vilchis"
+      ],
+      "abstract": "Current approaches to AI reasoning benchmarks rely on two paradigms: large-scale foundation models that preserve reasoning as tacit, unverifiable knowledge, and handcrafted rule systems that externalize knowledge but require extensive expert engineering. Both treat model behavior as a black box. We propose AIgrafía-from AIgrafía (AI + ethnography)-an ethnographic method for extracting executable primitives from LLM reasoning traces, treating language models as cultural informants rather than oracles. The method applies grounded theory protocols (participant observation, open coding, theoretical saturation, axial coding, operationalization) to systematically distill implicit model knowledge into verifiable, minimal executable artifacts. A pilot application yields a 379-byte ONNX network implementing a spatial positioning primitive, validated against ARC-AGI-1 benchmark tasks. A controlled experiment with six frontier models (DeepSeek, Grok, GPT, Gemini, Qwen, Claude) demonstrates empirically that models operating without externalized context produce generic algebraic responses (Level 2), while models with explicit context declarations produce domain-specific reasoning (Level 3), confirming that externalized cognitive context-rather than model architecture-is the determining factor in reasoning quality. We discuss implications for AI interpretability, benchmark design, and the epistemological gap identified by Chollet (2019) between skill interpolation and genuine generalization.",
+      "year": 2026,
+      "venue": null,
+      "url": "https://doi.org/10.2139/ssrn.6617198",
+      "doi": "10.2139/ssrn.6617198",
+      "source": "crossref",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: AIgrafía: An Ethnographic Method for Extracting Execu using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: AIgrafía: An Ethnographic Method for Extracting Execu-related methods."
+    },
+    {
+      "paper_id": "PPR1257890",
+      "title": "MetaCoT: Reasoning-Informed Metaheuristic Search via Large Language Model",
+      "authors": [
+        "Danach K",
+        "Aly WHF",
+        "Riman CF"
+      ],
+      "abstract": "<title>Abstract</title>  <p>Metaheuristic optimization methods are widely used for solving large-scale combinatorial problems, but their performance is often limited by fixed operator behaviors and low adaptivity. Recent advances in large generative models provide new opportunities for reasoning-driven algo-rithmic guidance, yet current integrations are largely superficial, typically using such models as direct solvers rather than as mechanisms for shaping metaheuristic dynamics. This paper introduces MetaCoT, a hybrid optimization framework that leverages chain-of-thought reasoning from large language models to guide and modulate metaheuristic search. CoT-derived insights generate evolving heuristic biases, adaptive operator control, and dynamic parameter schedules, transforming conventional metaheuristics into reasoning-informed systems capable of context-aware decision-making. Extensive experiments on NP-hard routing and scheduling benchmarks demonstrate that MetaCoT improves solution quality by 10–25% over classical and adaptive metaheuristic baselines. The framework maintains robust performance under noisy CoT reasoning and can be deployed offline via lightweight surrogate models that preserve over 90% of online performance while eliminating LLM inference overhead. MetaCoT establishes a new class of LLM-informed metaheuristics</p>",
+      "year": 2026,
+      "venue": "Research Square",
+      "url": "https://doi.org/10.21203/rs.3.rs-9807056/v1",
+      "doi": "10.21203/rs.3.rs-9807056/v1",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: MetaCoT: Reasoning-Informed Metaheuristic Search via  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: MetaCoT: Reasoning-Informed Metaheuristic Search via -related methods."
+    },
+    {
+      "paper_id": "PPR1295758",
+      "title": "The Rules of the Game: A Survey of Rubrics for Large Language Models",
+      "authors": [
+        "Liu W",
+        "Jin J",
+        "Huang Z",
+        "Wen T",
+        "Dong G",
+        "Zhao Z",
+        "Zhu Y",
+        "Dou Z",
+        "Wen J"
+      ],
+      "abstract": "Large language models (LLMs) have rapidly evolved from general text generators into increasingly capable systems for reasoning, decision-making, tool use, and long-horizon problem solving. As their application scenarios expand toward open-ended and high-stakes tasks, including deep research, medical diagnosis, multimodal generation, and agentic tool use, the question of how to specify, optimize, and evaluate model responses has become increasingly important. Simple correctness signals, holistic preference scores, and unconstrained LLM-based judgments are often insufficient for these settings, where response quality depends on multiple criteria such as factuality, completeness, safety, reasoning soundness, evidence grounding, and practical utility. Rubrics have therefore emerged as a promising mechanism for making evaluation standards explicit and operational. By decomposing broad quality expectations into structured and interpretable criteria, rubrics provide an interface for both training supervision and model evaluation.This paper presents a comprehensive and systematic overview of rubric-based research for LLMs. We first clarify the concept of rubrics and distinguish it from closely related concepts, including reward models, verifiable rewards, and LLM-as-a-judge. We then organize existing studies along three major directions. First, we summarize existing rubric construction methods and organize them into four categories: direct generation, contrastive generation, iterative refinement, and online or co-evolving generation. Second, we examine how rubrics support the training of policy models and reward models. For policy model training, we organize existing studies by their training mechanisms. For reward model training, we categorize prior work according to the functional roles that rubrics play in reward modeling. Third, we summarize \\textbf{rubric-driven task evaluation} for both general and domain-specific tasks, and discuss the evaluation benchmarks from various perspectives. Beyond consolidating existing work, we discuss a series of key \\textbf{open questions}, such as rubric reward hacking, the bias in rubric-based evaluation, personalization, and rubric safety. We hope this paper can serve as a structured reference for current research and a conceptual foundation for developing rubrics as transparent, adaptive, and trustworthy interfaces for future LLM systems. Given the rapid development of rubric-based research, we will keep this paper updated to incorporate new advances and emerging directions in this area.",
+      "year": 2026,
+      "venue": "Preprints.org",
+      "url": "https://doi.org/10.20944/preprints202608.0565.v1",
+      "doi": "10.20944/preprints202608.0565.v1",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: The Rules of the Game: A Survey of Rubrics for Large  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: The Rules of the Game: A Survey of Rubrics for Large -related methods."
+    },
+    {
+      "paper_id": "42412236",
+      "title": "Artificial intelligence advancements for orthopaedic clinical reasoning: longitudinal assessment of newer models (ChatGPT-5, Grok-3, Gemini 2.5 Flash) compared to clinicians",
+      "authors": [
+        "Agharia S",
+        "Soroush S",
+        "Ameen D",
+        "Zhou Y"
+      ],
+      "abstract": "<h4>Introduction</h4>This descriptive study aimed to longitudinally evaluate the performance of contemporary large language models - ChatGPT-5, Gemini 2.5 Flash, and Grok-3 - on orthopaedic clinical multiple-choice tasks, benchmarked against pooled clinician consensus. A secondary aim was to assess whether recent advances in generative AI translated into improved alignment with clinician consensus compared with previous AI models.<h4>Materials and methods</h4>A total of 97 multiple-choice clinical cases spanning eight orthopaedic subspecialties were sourced from OrthoBullets and previously benchmarked against aggregated responses from thousands of practising clinicians. Using identical methodology to our 2023 study of ChatGPT-3.5, ChatGPT-4, and Bard, each model was prompted with standardised case stems and response options. The primary outcome was the proportion of AI responses matching the most popular clinician response; secondary analyses assessed agreement within 10% and 20% of clinician consensus, performance on 'controversial' (< 25% margin) questions, and inter-model concordance using Cohen's kappa coefficients.<h4>Results</h4>Gemini 2.5 Flash achieved the highest alignment with clinician consensus (69.1%), followed by Grok-3 (66.0%) and ChatGPT-5 (58.8%). None of the LLMs refused to respond to any prompts, representing a reduction from 7.2% from our 2023 study. Subspecialty analysis demonstrated that Gemini 2.5 Flash performed best in Hand and Paediatric domains, while Grok-3 excelled in Reconstruction, Trauma, and 'controversial' cases. Inter-model agreement was highest between Grok-3 and Gemini 2.5 Flash (κ = 0.678), indicating improved consistency compared with prior-generation systems.<h4>Conclusions</h4>Contemporary LLMs can be promising adjuncts for orthopaedic education by simulating peer reasoning and offering structured explanations in non-critical settings. Despite incremental gains in reasoning capability compared to previous AI models, contemporary LLMs remain unsuitable for independent clinical use. Future research should develop hybrid clinician-AI workflows and longitudinal benchmarks to distinguish true reasoning improvements from memorisation.",
+      "year": 2026,
+      "venue": null,
+      "url": "https://europepmc.org/article/MED/42412236",
+      "doi": "10.1007/s00402-026-06400-6",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Artificial intelligence advancements for orthopaedic  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Artificial intelligence advancements for orthopaedic -related methods."
+    },
+    {
+      "paper_id": "42456638",
+      "title": "Injecting reasoning into vision-language models via weight-decomposed merging",
+      "authors": [
+        "Zou Y",
+        "Wang L",
+        "Zhao Q",
+        "Wei Y",
+        "Li Y",
+        "Du B"
+      ],
+      "abstract": "Model merging offers a promising training-free paradigm for integrating capabilities across pretrained models. While recent advances have demonstrated that merging large language models (LLMs) into vision-language models (VLMs) can endow them with reasoning abilities, we observe that standard weight merging strategies originally designed for structurally homogeneous models often introduce semantic inconsistencies between the vision and language modules. In many cases, this leads to degraded performance after merging, with visual grounding accuracy dropping by more than 50% in some scenarios. In this paper, we propose a weight-decomposed merging framework that explicitly decouples pretrained parameters into directional and magnitude components, and merges them independently to preserve representational alignment. Our method is simple, training-free, and compatible with heterogeneous model architectures. Through extensive empirical evaluation across three VLMs, four reasoning-capable LLMs, and three multimodal reasoning benchmarks, we show that our approach achieves strong and competitive performance in heterogeneous LLM-to-VLM merging settings. The results indicate that weight-decomposed merging provides a stable training-free pathway for reasoning injection while mitigating severe performance degradation observed in several baseline merging methods. The code is available at https://github.com/YC-Zou/Weight-Decomposed-VLM-Merging.",
+      "year": 2026,
+      "venue": null,
+      "url": "https://europepmc.org/article/MED/42456638",
+      "doi": "10.1016/j.neunet.2026.109364",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Injecting reasoning into vision-language models via w using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Injecting reasoning into vision-language models via w-related methods."
+    },
+    {
+      "paper_id": "PPR1275962",
+      "title": "Application and Impact of Large Language Model (LLM) Agents in Financial Operations and Public Policy",
+      "authors": [
+        "Izev M",
+        "Johansson G"
+      ],
+      "abstract": "The rapid digitalization of finance, accelerated by advances in artificial intelligence, has positioned Large Language Models (LLMs) as transformative tools not only for private-sector financial operations but also for public-sector economic governance. While much of the existing literature has focused on LLM applications in investment and trading, their potential to reshape core financial operations—such as regulatory compliance, fraud detection, contract intelligence, and risk reporting—remains underexplored. Simultaneously, governments and central banks are beginning to grapple with how LLM agents can assist in policy formulation, macroeconomic simulation, fiscal transparency, and real-time economic sentiment monitoring. This research undertakes a systematic examination of the deployment of LLM agents across these dual domains, with a particular emphasis on operational efficiency, decision support quality, and institutional accountability. Preliminary findings suggest that while LLM agents significantly reduce processing times for tasks like regulatory reporting and contract review, their outputs exhibit concerning variability in reasoning consistency and are susceptible to subtle prompt-induced biases. In the policy domain, LLMs demonstrate promise in summarizing vast economic literature and generating scenario simulations, yet they struggle with causal reasoning and fail to adequately quantify uncertainty—raising serious concerns for their use in fiscal and monetary decision-making. The research concludes by proposing a human-in-the-loop governance architecture that balances automation with oversight, alongside a set of regulatory benchmarks for evaluating LLM reliability in financial and policy settings. By bridging the technical, operational, and ethical dimensions of LLM adoption, this study contributes to the emerging field of AI governance in finance and offers practical guidance for institutions navigating the transition toward AI-augmented financial ecosystems.",
+      "year": 2026,
+      "venue": "ScienceOpen Preprints",
+      "url": "https://doi.org/10.14293/pr2199.004004.v1",
+      "doi": "10.14293/pr2199.004004.v1",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Application and Impact of Large Language Model (LLM)  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Application and Impact of Large Language Model (LLM) -related methods."
+    },
+    {
+      "paper_id": "42454361",
+      "title": "Artificial Intelligence and Multidisciplinary Oncology Decision-Making: A Systematic Review of LLM Concordance with MDT Recommendations and Implications for Clinical Reasoning Education",
+      "authors": [
+        "Ren Y",
+        "Su W",
+        "Wu Y",
+        "Dong S",
+        "Liang S",
+        "Yang X"
+      ],
+      "abstract": "<h4>Introduction</h4>Multidisciplinary team (MDT) decision-making is a cornerstone of oncology practice and an important context for developing clinical reasoning skills. Artificial intelligence (AI), particularly large language models (LLMs), has recently been explored as a potential tool to support clinical decision-making in oncology settings.<h4>Methods</h4>This systematic review, conducted according to PRISMA 2020 guidelines, synthesizes evidence on the concordance between LLM-generated recommendations and MDT decisions in oncology. Twenty-two studies were included, primarily comprising retrospective analyses comparing AI-generated outputs with expert MDT consensus across diagnostic, therapeutic, and workflow-related tasks.<h4>Results</h4>LLMs demonstrated generally moderate to high concordance with MDT decisions in guideline-constrained clinical scenarios. However, performance decreased in complex or less-structured cases. Variability in outcomes was associated with model architecture, prompting strategies, and retrieval-augmented approaches. Across studies, AI performance was most consistent when aligned with established clinical guidelines. Substantial heterogeneity existed among models and study designs, limiting direct comparability.<h4>Conclusion</h4>From a cognitive perspective, LLMs may be conceptualized as external information-processing tools that partially mirror structured aspects of MDT reasoning in specific contexts. However, evidence remains limited to retrospective concordance analyses and does not demonstrate educational impact. Any implications for clinical reasoning education should be interpreted as theoretical and require prospective validation using established educational frameworks such as cognitive apprenticeship or shared mental models.",
+      "year": 2026,
+      "venue": null,
+      "url": "https://europepmc.org/article/MED/42454361",
+      "doi": "10.2147/amep.s621485",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Artificial Intelligence and Multidisciplinary Oncolog using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Artificial Intelligence and Multidisciplinary Oncolog-related methods."
+    },
+    {
+      "paper_id": "41817966",
+      "title": "SELongVLM: Empowering Long Video Language Models With Self-Corrective Clip Selection",
+      "authors": [
+        "Zhang K",
+        "Yang Z",
+        "Han M",
+        "Zhuge Y",
+        "Hao H",
+        "Li C",
+        "Li Z",
+        "Chang X"
+      ],
+      "abstract": "Recent advances in multimodal large language models (MLLMs) have enabled impressive progress in visual-language reasoning, yet long-video understanding remains a formidable challenge due to the need for coherent reasoning over ultra-long spatiotemporal dependencies. Existing methods struggle with the vast candidate space for relevant information in long videos, often failing to distinguish meaningful events from redundant content. We identify two critical and previously under-explored issues: absolute redundancy, where static visual content inflates token counts without adding narrative value, and relative redundancy, where task-irrelevant segments introduce noise that impairs reasoning. Compounding these issues is the weak spatiotemporal modeling in current MLLMs, which limits their ability to capture complex event dynamics. To address these multifaceted challenges, we introduce SELongVLM, a dynamically lenient-to-stringent selection long video language model. SELongVLM integrates two coordinated branches: a Residual Token Pruner (RTP) that removes repetitive background tokens via inter-frame residual modeling thus mitigating absolute redundancy while preserving motion cues, and a Semantic-aware Self-Correction Selector (SCSelector) that progressively refines query-relevant clip selection without frame-level annotations to reduce relative redundancy, guided by a stringent-to-lenient self-correcting mechanism during optimization. To ensure causal continuity and bolster spatiotemporal reasoning across disjoint clips, the framework further incorporates an action-aware operation for intra-clip dynamics and a temporal memory for cross-clip context, enabling robust spatiotemporal inference on long videos. Extensive experiments across eight benchmarks demonstrate that SELongVLM markedly outperforms existing models on both general and specialized long-video tasks. Specifically, it achieves 65.5% on VideoMME and 69.8% on MLVU for general benchmarks, and delivers strong performance on four specialized benchmarks - for example, 39.2% on TOMATO for fine-grained temporal reasoning and 69.2% on EventBench for event-level understanding.",
+      "year": 2026,
+      "venue": null,
+      "url": "https://europepmc.org/article/MED/41817966",
+      "doi": "10.1109/tpami.2026.3673141",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: SELongVLM: Empowering Long Video Language Models With using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: SELongVLM: Empowering Long Video Language Models With-related methods."
+    },
+    {
+      "paper_id": "42399110",
+      "title": "Benchmarking Zero-Shot Generative Pre-Trained Transformer-Based Multimodal Large Language Models for Pressure Injury Staging",
+      "authors": [
+        "Takahashi T",
+        "Miyo K",
+        "Tamai N"
+      ],
+      "abstract": "<h4>Objective</h4>To benchmark zero-shot generative pre-trained transformer (GPT)-based multimodal large language models (MLLMs) for pressure injury (PI) staging from photographs and quantify the effects of prompt strategy, structured outputs, and clinically meaningful label granularity.<h4>Approach</h4>We performed a retrospective observational benchmark using 1,091 public, de-identified PI photographs labeled Stage I-IV. In the standardized analysis, all 10 model/prompt conditions were evaluated using a standardized, resume-safe application programming interface pipeline with per-image logging. We evaluated exact four-class staging, three-class staging (I/II/III-IV), skin-break screening (I vs. II-IV), and an advanced-intervention threshold (I-II vs. III-IV). Reporting followed Strengthening the Reporting of Observational Studies in Epidemiology and artificial intelligence/machine learning guidance; metrics included accuracy, Wilson 95% confidence intervals, F1 scores, weighted kappa, and threshold sensitivity/specificity.<h4>Results</h4>All conditions yielded parsed predictions for all 1,091 images. The best accuracy was 93.77% for skin-break screening (GPT-5.2 structured JavaScript Object Notation [JSON]), 90.28% for the advanced-intervention threshold (GPT-5.1 full prompt, low reasoning), 83.78% for three-class staging (GPT-5.1 full prompt, low reasoning), and 65.08% for exact four-class staging (GPT-5.2 structured JSON). The best advanced-intervention condition achieved sensitivity 96.72%, specificity 83.79%, and negative predictive value 96.19%. Stage IV undercalling remained safety-relevant; GPT-5.2-pro had Stage IV recall 8.79% and false-negative rate 91.21%.<h4>Innovation</h4>This prompt-transparent benchmark shows how outcome granularity, prompting, and structured outputs affect GPT-based PI staging and adds ordinal, threshold-based, and safety metrics.<h4>Conclusion</h4>GPT-based MLLMs may support clinician-supervised triage and prioritization, but image-only autonomous exact staging is not clinically ready.[Figure: see text].",
+      "year": 2026,
+      "venue": null,
+      "url": "https://europepmc.org/article/MED/42399110",
+      "doi": "10.1177/21621918261465916",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Benchmarking Zero-Shot Generative Pre-Trained Transfo using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Benchmarking Zero-Shot Generative Pre-Trained Transfo-related methods."
+    },
+    {
+      "paper_id": "PPR1252614",
+      "title": "A Survey of Recent Advances in Industrial Anomaly Detection: From Normal-Only Training to Foundation-Model Priors",
+      "authors": [
+        "Jiang X",
+        "Hu B",
+        "Zheng F"
+      ],
+      "abstract": "Industrial anomaly detection, the computer-vision core of automated quality inspection, had by 2023 settled into a stable method taxonomy organized around a single assumption: a separate detector trained per product on defect-free images alone, evaluated on closed-set benchmarks. The 2024-2026 wave breaks this assumption. Web-pretrained foundation models (vision encoders, multimodal large language models, and diffusion models) generalize across product categories without per-product retraining, recasting anomaly detection from per-category density estimation into a foundation-model-prior problem: detection from frozen pretrained features, defect reasoning in natural language, mixture-of-experts models shared across modalities, and language-controlled synthesis of the missing abnormal data. Because the reconstruction, embedding, distillation, and memory taxonomy of earlier surveys no longer absorbs this literature, we reorganize it around one question (what replaces category-specific normal-only training?) into five emerging generalization mechanisms: visual, reasoning, geometric and multimodal, universal, and synthesis priors. We then audit the field's benchmark and evaluation frontier, catalog eight cross-cutting bottlenecks that no current method resolves at once, and propose a five-problem research agenda. We conclude that, despite real progress on all five mechanisms, current methods still generalize within curated benchmarks more than under real-world deployment; closing that gap is the agenda's central aim.",
+      "year": 2026,
+      "venue": "Preprints.org",
+      "url": "https://doi.org/10.20944/preprints202606.0719.v1",
+      "doi": "10.20944/preprints202606.0719.v1",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: A Survey of Recent Advances in Industrial Anomaly Det using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: A Survey of Recent Advances in Industrial Anomaly Det-related methods."
+    },
+    {
+      "paper_id": "PPR1291488",
+      "title": "Self-Verification is All You Need To Pass The Japanese Bar Examination",
+      "authors": [
+        "Shin A"
+      ],
+      "abstract": "<title>Abstract</title>  <p>Despite rapid advances in large language models (LLMs), achieving reliable performance on highly professional and structured examinations remains a significant challenge. The Japanese bar examination is a particularly demanding benchmark, requiring not only advanced legal reasoning but also strict adherence to complex answer formats that involve joint evaluation of multiple propositions. While recent studies have reported improvements by decomposing such questions into simpler true--false judgments, these approaches have not been systematically evaluated under the original exam format and scoring scheme, leaving open the question of whether they truly capture exam-level competence. In this paper, we present a self-verification model trained on a newly constructed dataset that faithfully replicates the authentic format and evaluation scale of the exam. Our model is able to exceed the official passing score when evaluated on the actual exam scale, marking the first demonstration, to our knowledge, of an LLM passing the Japanese bar examination without altering its original question structure or scoring rules. We further conduct extensive comparisons with alternative strategies, including multi-agent inference and decomposition-based supervision, and find that these methods fail to achieve comparable performance. Our results highlight the importance of format-faithful supervision and consistency verification, and suggest that carefully designed single-model approaches can outperform more complex systems in high-stakes professional reasoning tasks. Our dataset and codes are publicly available.</p>",
+      "year": 2026,
+      "venue": "Research Square",
+      "url": "https://doi.org/10.21203/rs.3.rs-10244496/v1",
+      "doi": "10.21203/rs.3.rs-10244496/v1",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Self-Verification is All You Need To Pass The Japanes using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Self-Verification is All You Need To Pass The Japanes-related methods."
+    },
+    {
+      "paper_id": "42600130",
+      "title": "Advancing Evidence-Based Medicine for Population, Intervention, Comparison, and Outcome Element Recognition and Extraction in Medical Literature: Large Language Model Approach",
+      "authors": [
+        "Hao Z",
+        "Duan Y",
+        "Wang Y"
+      ],
+      "abstract": "<h4>Background</h4>The exponential expansion of biomedical literature has created an urgent need for efficient methods to recognize and extract population, intervention, comparison, and outcome (PICO) elements-the foundational elements of evidence-based medicine.<h4>Objective</h4>This study systematically evaluated 2 complementary approaches for automating PICO recognition and extraction in medical literature: prompt engineering optimization and parameter-efficient fine-tuning (PEFT) of large language models (LLMs).<h4>Methods</h4>We developed a dual-phase methodological framework: (1) systematic prompt optimization incorporating in-context learning, chain of thought (COT), and multipath reasoning strategies; and (2) PEFT of the LLM architecture using low-rank adaptation (LoRA), quantized LoRA, and freeze techniques. The PubMed-PICO and NICTA-PIBOSO benchmark datasets were used for recognition tasks, and the EBM-NLP dataset was used for extraction tasks. Performance metrics included precision, recall, and F1-score. F1-score was adopted as the major metric as it balances precision and recall.<h4>Results</h4>For prompt engineering, COT achieved the overall best performance across both recognition and extraction tasks. For example, in the recognition task, COT obtained strong average F1-scores of 77.1% (SD 0.5%) for the population element and 84.5% (SD 0.4%) for the outcome element on PubMed-PICO. In the extraction task, COT achieved the highest average F1-score of 73.9% across 3 PICO elements (the population, intervention, and outcome elements) on EBM-NLP. These results suggest that, for smaller models such as those with 3B parameters, explicit step-by-step guidance in COT is more effective than more complex prompting strategies. In PEFT implementations, for example, LoRA achieved the best recognition performance (mean F1-score 91.7%, SD 0.3% for population) on PubMed-PICO, whereas quantized LoRA showed the best extraction capability (mean F1-score 79.3%, SD 0.5% for intervention) on EBM-NLP. Fine-tuned models achieved competitive performance across all datasets, with notable gains on NICTA-PIBOSO and EBM-NLP. PEFT further enhanced the model's overall performance compared with prompt engineering, with element-dependent differences across PICO categories.<h4>Conclusions</h4>Our findings indicate that LLMs can effectively automate PICO recognition and extraction through 2 complementary approaches. First, prompt engineering allows the model to perform tasks directly without altering its internal settings. Second, the PEFT method further unlocks their maximum performance potential by incorporating additional fine-tuning based on prompt engineering. This work makes significant advances and provides critical insights for optimizing methodological approaches in clinical applications related to or comprising PICO extraction and recognition tasks.",
+      "year": 2026,
+      "venue": null,
+      "url": "https://europepmc.org/article/MED/42600130",
+      "doi": "10.2196/91215",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: Advancing Evidence-Based Medicine for Population, Int using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Advancing Evidence-Based Medicine for Population, Int-related methods."
+    },
+    {
+      "paper_id": "PPR1274110",
+      "title": "LLM-Augmented Decision Intelligence for Real-Time Supply Chain Risk Assessment: A Parameterized Simulation and FMEA-Based Framework",
+      "authors": [
+        "Donapati NR"
+      ],
+      "abstract": "<title>Abstract</title>  <p>Modern supply chain systems operate in highly volatile environments where conventional risk management approaches are structurally insufficient to capture compound and multi-dimensional disruptions. This paper proposes a novel LLM-augmented decision intelligence framework that integrates a six-layer processing architecture with FMEA-based risk quantification and large language model contextual reasoning for real-time supply chain risk assessment. The proposed framework advances existing approaches by combining deterministic risk formalization—through the FMEA-based Risk Priority Number (RPN) scoring mechanism—with the contextual reasoning capabilities of large language models within a unified, modular enterprise pipeline. Empirical validation is conducted on two complementary datasets: a fully deterministic 120-scenario parameterized simulation enabling controlled stress-testing of compound risk interactions, and the publicly available DataCo Smart Supply Chain dataset comprising 180,519 transaction-level records, which constitutes the primary basis for performance claims and real-world generalizability assessment. On the DataCo dataset, the proposed framework achieves 96.8% recall—the operationally critical metric in high-stakes risk detection contexts where false negatives carry substantially higher cost than false alarms—with McNemar's test confirming statistically significant superiority over baseline systems (χ² = 156.4, p < 0.001). Five-fold stratified cross-validation confirms highly stable performance (Recall: 96.9% ± 0.4%). A strong RPN-to-cost correlation (r = 0.89, p < 0.001) validates FMEA scoring as a financially grounded risk proxy. The framework is designed for enterprise integration via a REST API layer compatible with leading ERP and CRM platforms. These results collectively demonstrate that integrating deterministic FMEA quantification with LLM-based contextual reasoning yields a scalable, auditable, and operationally robust foundation for next-generation supply chain decision intelligence.</p>",
+      "year": 2026,
+      "venue": "Research Square",
+      "url": "https://doi.org/10.21203/rs.3.rs-10027505/v1",
+      "doi": "10.21203/rs.3.rs-10027505/v1",
+      "source": "europepmc",
+      "citation_count": 0,
+      "keywords": [],
+      "summary": "This paper investigates Title: LLM-Augmented Decision Intelligence for Real-Time Sup using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: LLM-Augmented Decision Intelligence for Real-Time Sup-related methods."
+    }
+  ],
+  "hypotheses": [
+    {
+      "statement": "Advances in large language model may be accelerated by incorporating cross-domain knowledge transfer.",
+      "rationale": "Recent literature suggests that methods from adjacent fields have shown promise when applied to large language model. Further investigation is warranted.",
+      "confidence": 0.65
+    },
+    {
+      "statement": "The scalability of current large language model approaches remains an open problem requiring novel architectural solutions.",
+      "rationale": "Multiple reviewed papers highlight performance degradation at scale. A unified framework specific to large language model could address this gap.",
+      "confidence": 0.72
+    },
+    {
+      "statement": "Longitudinal datasets focused on large language model would reveal temporal dynamics not captured in existing benchmarks.",
+      "rationale": "Most current work on large language model relies on static snapshots. Dynamic evaluation protocols may expose important limitations.",
+      "confidence": 0.58
+    }
+  ],
+  "sections": {
+    "introduction": "Research on large language model has seen significant advances in recent years. Multiple independent groups have explored large language model from complementary angles, lending confidence to emerging theoretical frameworks. Key open questions remain around scalability, generalisation, and real-world applicability of large language model methods. The reviewed papers collectively highlight both the maturity and the frontier challenges of this field.",
+    "literature_review": "**Making Large Language Models Better Reasoners with Alignment** (2023)\n\nThis paper investigates Title: Making Large Language Models Better Reasoners with Al using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Making Large Language Models Better Reasoners with Al-related methods.\n\n---\n\n**Large Language Models Reasoning Abilities Under Non-Ideal Conditions After RL-Fine-Tuning** (2025)\n\nThis paper investigates Title: Large Language Models Reasoning Abilities Under Non-I using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Large Language Models Reasoning Abilities Under Non-I-related methods.\n\n---\n\n**CROP: Token-Efficient Reasoning in Large Language Models via Regularized Prompt Optimization** (2026)\n\nThis paper investigates Title: CROP: Token-Efficient Reasoning in Large Language Mod using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: CROP: Token-Efficient Reasoning in Large Language Mod-related methods.\n\n---\n\n**Response: Emergent analogical reasoning in large language models** (2023)\n\nThis paper investigates Title: Response: Emergent analogical reasoning in large lang using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Response: Emergent analogical reasoning in large lang-related methods.\n\n---\n\n**ARS: Adaptive Reasoning Suppression for Efficient Large Reasoning Language Models** (2025)\n\nThis paper investigates Title: ARS: Adaptive Reasoning Suppression for Efficient Lar using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: ARS: Adaptive Reasoning Suppression for Efficient Lar-related methods.\n\n---\n\n**Navigating the State of Cognitive Flow: Context-Aware AI Interventions for Effective Reasoning Support** (2025)\n\nThis paper investigates Title: Navigating the State of Cognitive Flow: Context-Aware using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Navigating the State of Cognitive Flow: Context-Aware-related methods.\n\n---\n\n**Hierarchical Multi-agent Large Language Model Reasoning for Autonomous Functional Materials Discovery** (2025)\n\nThis paper investigates Title: Hierarchical Multi-agent Large Language Model Reasoni using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Hierarchical Multi-agent Large Language Model Reasoni-related methods.\n\n---\n\n**Beneath the Surface: Unveiling Harmful Memes with Multimodal Reasoning Distilled from Large Language Models** (2023)\n\nThis paper investigates Title: Beneath the Surface: Unveiling Harmful Memes with Mul using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Beneath the Surface: Unveiling Harmful Memes with Mul-related methods.\n\n---\n\n**Learning From Failure: Integrating Negative Examples when Fine-tuning Large Language Models as Agents** (2024)\n\nThis paper investigates Title: Learning From Failure: Integrating Negative Examples  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Learning From Failure: Integrating Negative Examples -related methods.\n\n---\n\n**Exploring Advanced Large Language Models with LLMsuite** (2024)\n\nThis paper investigates Title: Exploring Advanced Large Language Models with LLMsuit using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Exploring Advanced Large Language Models with LLMsuit-related methods.\n\n---\n\n**From System 1 to System 2: A Survey of Reasoning Large Language Models** (2025)\n\nThis paper investigates Title: From System 1 to System 2: A Survey of Reasoning Larg using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: From System 1 to System 2: A Survey of Reasoning Larg-related methods.\n\n---\n\n**Understanding Reasoning in Thinking Language Models via Steering Vectors** (2025)\n\nThis paper investigates Title: Understanding Reasoning in Thinking Language Models v using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Understanding Reasoning in Thinking Language Models v-related methods.\n\n---\n\n**Condensed Reasoning Prompting: Efficient Strategies, Evaluations, and Trade Offs in Large Language Model Reasoning** (2025)\n\nThis paper investigates Title: Condensed Reasoning Prompting: Efficient Strategies,  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Condensed Reasoning Prompting: Efficient Strategies, -related methods.\n\n---\n\n**Data Synthesis for Large Language Model Reasoning: A Review of the Evolution from Surface Imitation to Deep Logic** (2026)\n\nThis paper investigates Title: Data Synthesis for Large Language Model Reasoning: A  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Data Synthesis for Large Language Model Reasoning: A -related methods.\n\n---\n\n**Training a Reasoning Large Language Model for Improving Power Flow Convergence** (2025)\n\nThis paper investigates Title: Training a Reasoning Large Language Model for Improvi using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Training a Reasoning Large Language Model for Improvi-related methods.\n\n---\n\n**AIgrafía: An Ethnographic Method for Extracting Executable Primitives from Large Language Model Reasoning** (2026)\n\nThis paper investigates Title: AIgrafía: An Ethnographic Method for Extracting Execu using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: AIgrafía: An Ethnographic Method for Extracting Execu-related methods.\n\n---\n\n**MetaCoT: Reasoning-Informed Metaheuristic Search via Large Language Model** (2026)\n\nThis paper investigates Title: MetaCoT: Reasoning-Informed Metaheuristic Search via  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: MetaCoT: Reasoning-Informed Metaheuristic Search via -related methods.\n\n---\n\n**The Rules of the Game: A Survey of Rubrics for Large Language Models** (2026)\n\nThis paper investigates Title: The Rules of the Game: A Survey of Rubrics for Large  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: The Rules of the Game: A Survey of Rubrics for Large -related methods.\n\n---\n\n**Artificial intelligence advancements for orthopaedic clinical reasoning: longitudinal assessment of newer models (ChatGPT-5, Grok-3, Gemini 2.5 Flash) compared to clinicians** (2026)\n\nThis paper investigates Title: Artificial intelligence advancements for orthopaedic  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Artificial intelligence advancements for orthopaedic -related methods.\n\n---\n\n**Injecting reasoning into vision-language models via weight-decomposed merging** (2026)\n\nThis paper investigates Title: Injecting reasoning into vision-language models via w using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Injecting reasoning into vision-language models via w-related methods.\n\n---\n\n**Application and Impact of Large Language Model (LLM) Agents in Financial Operations and Public Policy** (2026)\n\nThis paper investigates Title: Application and Impact of Large Language Model (LLM)  using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Application and Impact of Large Language Model (LLM) -related methods.\n\n---\n\n**Artificial Intelligence and Multidisciplinary Oncology Decision-Making: A Systematic Review of LLM Concordance with MDT Recommendations and Implications for Clinical Reasoning Education** (2026)\n\nThis paper investigates Title: Artificial Intelligence and Multidisciplinary Oncolog using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Artificial Intelligence and Multidisciplinary Oncolog-related methods.\n\n---\n\n**SELongVLM: Empowering Long Video Language Models With Self-Corrective Clip Selection** (2026)\n\nThis paper investigates Title: SELongVLM: Empowering Long Video Language Models With using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: SELongVLM: Empowering Long Video Language Models With-related methods.\n\n---\n\n**Benchmarking Zero-Shot Generative Pre-Trained Transformer-Based Multimodal Large Language Models for Pressure Injury Staging** (2026)\n\nThis paper investigates Title: Benchmarking Zero-Shot Generative Pre-Trained Transfo using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Benchmarking Zero-Shot Generative Pre-Trained Transfo-related methods.\n\n---\n\n**A Survey of Recent Advances in Industrial Anomaly Detection: From Normal-Only Training to Foundation-Model Priors** (2026)\n\nThis paper investigates Title: A Survey of Recent Advances in Industrial Anomaly Det using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: A Survey of Recent Advances in Industrial Anomaly Det-related methods.\n\n---\n\n**Self-Verification is All You Need To Pass The Japanese Bar Examination** (2026)\n\nThis paper investigates Title: Self-Verification is All You Need To Pass The Japanes using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Self-Verification is All You Need To Pass The Japanes-related methods.\n\n---\n\n**Advancing Evidence-Based Medicine for Population, Intervention, Comparison, and Outcome Element Recognition and Extraction in Medical Literature: Large Language Model Approach** (2026)\n\nThis paper investigates Title: Advancing Evidence-Based Medicine for Population, Int using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: Advancing Evidence-Based Medicine for Population, Int-related methods.\n\n---\n\n**LLM-Augmented Decision Intelligence for Real-Time Supply Chain Risk Assessment: A Parameterized Simulation and FMEA-Based Framework** (2026)\n\nThis paper investigates Title: LLM-Augmented Decision Intelligence for Real-Time Sup using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contributions include theoretical insights and empirical validation of Title: LLM-Augmented Decision Intelligence for Real-Time Sup-related methods.",
+    "methods_note": "The following papers were retrieved and analysed using automated literature search (arXiv, Semantic Scholar) and NLP-based summarisation:\n\n- Making Large Language Models Better Reasoners with Alignment: This paper investigates Title: Making Large Language Models Better Reasoners with Al using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr\n- Large Language Models Reasoning Abilities Under Non-Ideal Conditions After RL-Fine-Tuning: This paper investigates Title: Large Language Models Reasoning Abilities Under Non-I using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr\n- CROP: Token-Efficient Reasoning in Large Language Models via Regularized Prompt Optimization: This paper investigates Title: CROP: Token-Efficient Reasoning in Large Language Mod using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr\n- Response: Emergent analogical reasoning in large language models: This paper investigates Title: Response: Emergent analogical reasoning in large lang using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr\n- ARS: Adaptive Reasoning Suppression for Efficient Large Reasoning Language Models: This paper investigates Title: ARS: Adaptive Reasoning Suppression for Efficient Lar using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr\n- Navigating the State of Cognitive Flow: Context-Aware AI Interventions for Effective Reasoning Support: This paper investigates Title: Navigating the State of Cognitive Flow: Context-Aware using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr\n- Hierarchical Multi-agent Large Language Model Reasoning for Autonomous Functional Materials Discovery: This paper investigates Title: Hierarchical Multi-agent Large Language Model Reasoni using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr\n- Beneath the Surface: Unveiling Harmful Memes with Multimodal Reasoning Distilled from Large Language Models: This paper investigates Title: Beneath the Surface: Unveiling Harmful Memes with Mul using rigorous methodology. The authors present novel findings that advance understanding in this domain. Key contr",
+    "hypotheses": "**H1: Advances in large language model may be accelerated by incorporating cross-domain knowledge transfer.**\n\n*Rationale:* Recent literature suggests that methods from adjacent fields have shown promise when applied to large language model. Further investigation is warranted.\n\n*Confidence:* 0.65\n\n---\n\n**H2: The scalability of current large language model approaches remains an open problem requiring novel architectural solutions.**\n\n*Rationale:* Multiple reviewed papers highlight performance degradation at scale. A unified framework specific to large language model could address this gap.\n\n*Confidence:* 0.72\n\n---\n\n**H3: Longitudinal datasets focused on large language model would reveal temporal dynamics not captured in existing benchmarks.**\n\n*Rationale:* Most current work on large language model relies on static snapshots. Dynamic evaluation protocols may expose important limitations.\n\n*Confidence:* 0.58",
+    "conclusion": "Research on large language model has seen significant advances in recent years. Multiple independent groups have explored large language model from complementary angles, lending confidence to emerging theoretical frameworks. Key open questions remain around scalability, generalisation, and real-world applicability of large language model methods. The reviewed papers collectively highlight both the maturity and the frontier challenges of this field."
+  },
+  "citations": [
+    "A, S. (2026). Self-Verification is All You Need To Pass The Japanese Bar Examination *Research Square*. https://doi.org/10.21203/rs.3.rs-10244496/v1",
+    "Dissanayake, D., & Nanayakkara, S. (2025). Navigating the State of Cognitive Flow: Context-Aware AI Interventions for Effective Reasoning Support. http://arxiv.org/abs/2504.16021v1",
+    "Hodel, D., & West, J. (2023). Response: Emergent analogical reasoning in large language models. http://arxiv.org/abs/2308.16118v2",
+    "K, D., WHF, A., & CF, R. (2026). MetaCoT: Reasoning-Informed Metaheuristic Search via Large Language Model *Research Square*. https://doi.org/10.21203/rs.3.rs-9807056/v1",
+    "K, Z., Z, Y., M, H., Y, Z., H, H., C, L., … X, C. (2026). SELongVLM: Empowering Long Video Language Models With Self-Corrective Clip Selection. https://doi.org/10.1109/tpami.2026.3673141",
+    "Li, Z., Zhang, D., Zhang, M., Zhang, J., Liu, Z., Yao, Y., … Liu, C. (2025). From System 1 to System 2: A Survey of Reasoning Large Language Models. http://arxiv.org/abs/2502.17419v6",
+    "Lin, H., Luo, Z., Ma, J., & Chen, L. (2023). Beneath the Surface: Unveiling Harmful Memes with Multimodal Reasoning Distilled from Large Language Models. http://arxiv.org/abs/2312.05434v1",
+    "M, I., & G, J. (2026). Application and Impact of Large Language Model (LLM) Agents in Financial Operations and Public Policy *ScienceOpen Preprints*. https://doi.org/10.14293/pr2199.004004.v1",
+    "Mehra, G., & Khan, D. (2025). Condensed Reasoning Prompting: Efficient Strategies, Evaluations, and Trade Offs in Large Language Model Reasoning. https://doi.org/10.21203/rs.3.rs-6170708/v1",
+    "NR, D. (2026). LLM-Augmented Decision Intelligence for Real-Time Supply Chain Risk Assessment: A Parameterized Simulation and FMEA-Based Framework *Research Square*. https://doi.org/10.21203/rs.3.rs-10027505/v1",
+    "Roffo, G. (2024). Exploring Advanced Large Language Models with LLMsuite. https://doi.org/https://doi.org/10.13140/RG.2.2.11774.80963",
+    "Rothfarb, S., Davis, M. C., Matanovic, I., Li, B., Holby, E. F., & Kort-Kamp, W. J. M. (2025). Hierarchical Multi-agent Large Language Model Reasoning for Autonomous Functional Materials Discovery. http://arxiv.org/abs/2512.13930v1",
+    "S, A., S, S., D, A., & Y, Z. (2026). Artificial intelligence advancements for orthopaedic clinical reasoning: longitudinal assessment of newer models (ChatGPT-5, Grok-3, Gemini 2.5 Flash) compared to clinicians. https://doi.org/10.1007/s00402-026-06400-6",
+    "Shah, D., Badhe, S., Kathrotia, N., & Tiwari, P. (2026). CROP: Token-Efficient Reasoning in Large Language Models via Regularized Prompt Optimization. http://arxiv.org/abs/2604.14214v1",
+    "T, T., K, M., & N, T. (2026). Benchmarking Zero-Shot Generative Pre-Trained Transformer-Based Multimodal Large Language Models for Pressure Injury Staging. https://doi.org/10.1177/21621918261465916",
+    "Tian, C., Blaschko, M. B., Xing, M., Li, X., Yue, Y., & Moens, M. (2025). Large Language Models Reasoning Abilities Under Non-Ideal Conditions After RL-Fine-Tuning. http://arxiv.org/abs/2508.04848v1",
+    "Venhoff, C., Arcuschin, I., Torr, P., Conmy, A., & Nanda, N. (2025). Understanding Reasoning in Thinking Language Models via Steering Vectors. http://arxiv.org/abs/2506.18167v4",
+    "Vilchis, T. G. (2026). AIgrafía: An Ethnographic Method for Extracting Executable Primitives from Large Language Model Reasoning. https://doi.org/10.2139/ssrn.6617198",
+    "W, L., J, J., Z, H., T, W., G, D., Z, Z., … J, W. (2026). The Rules of the Game: A Survey of Rubrics for Large Language Models *Preprints.org*. https://doi.org/10.20944/preprints202608.0565.v1",
+    "Wang, P., Li, L., Chen, L., Song, F., Lin, B., Cao, Y., … Sui, Z. (2023). Making Large Language Models Better Reasoners with Alignment. http://arxiv.org/abs/2309.02144v1",
+    "Wang, R., Li, H., Han, X., Zhang, Y., & Baldwin, T. (2024). Learning From Failure: Integrating Negative Examples when Fine-tuning Large Language Models as Agents. http://arxiv.org/abs/2402.11651v2",
+    "Wu, M. (2026). Data Synthesis for Large Language Model Reasoning: A Review of the Evolution from Surface Imitation to Deep Logic *Advances in Engineering Technology Research*. https://doi.org/10.56028/aetr.17.1.1316.2026",
+    "X, J., B, H., & F, Z. (2026). A Survey of Recent Advances in Industrial Anomaly Detection: From Normal-Only Training to Foundation-Model Priors *Preprints.org*. https://doi.org/10.20944/preprints202606.0719.v1",
+    "Y, R., W, S., Y, W., S, D., S, L., & X, Y. (2026). Artificial Intelligence and Multidisciplinary Oncology Decision-Making: A Systematic Review of LLM Concordance with MDT Recommendations and Implications for Clinical Reasoning Education. https://doi.org/10.2147/amep.s621485",
+    "Y, Z., L, W., Q, Z., Y, W., Y, L., & B, D. (2026). Injecting reasoning into vision-language models via weight-decomposed merging. https://doi.org/10.1016/j.neunet.2026.109364",
+    "Yan, Y., Chen, Y., & Xiao, T. (2025). Training a Reasoning Large Language Model for Improving Power Flow Convergence. https://doi.org/10.36227/techrxiv.175493660.02041809/v1",
+    "Z, H., Y, D., & Y, W. (2026). Advancing Evidence-Based Medicine for Population, Intervention, Comparison, and Outcome Element Recognition and Extraction in Medical Literature: Large Language Model Approach. https://doi.org/10.2196/91215",
+    "Zheng, D. (2025). ARS: Adaptive Reasoning Suppression for Efficient Large Reasoning Language Models. http://arxiv.org/abs/2510.00071v2"
+  ]
+}
